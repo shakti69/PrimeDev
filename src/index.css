@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    width: 100% !important;
+    max-w: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    @apply bg-brand-light text-slate-800 transition-colors duration-300 font-sans antialiased overflow-x-hidden;
+  }
+  body.dark {
+    @apply bg-brand-dark text-slate-200;
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphism Card Style */
+  .glass-card {
+    @apply bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 shadow-lg dark:shadow-slate-950/20 transition-all duration-300;
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-white/80 dark:hover:bg-slate-900/80 hover:border-brand-accent-blue/50 dark:hover:border-brand-accent-purple/50 hover:shadow-xl dark:hover:shadow-brand-accent-purple/5 hover:-translate-y-1;
+  }
+
+  /* Sticky Navigation Header Glass */
+  .glass-nav {
+    @apply bg-white/70 dark:bg-brand-dark/70 backdrop-blur-lg border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-all duration-300;
+  }
+
+  /* Premium Buttons */
+  .btn-primary {
+    @apply relative overflow-hidden px-6 py-3 rounded-xl font-medium text-white bg-gradient-to-r from-brand-accent-blue to-brand-accent-purple hover:opacity-95 shadow-md shadow-brand-accent-blue/20 transition-all duration-300 hover:shadow-lg hover:shadow-brand-accent-purple/30 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-medium border border-slate-300 dark:border-slate-700 bg-white/20 dark:bg-slate-900/20 hover:bg-white/40 dark:hover:bg-slate-900/40 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 rounded-xl font-medium text-white bg-gradient-to-r from-brand-accent-cyan to-brand-accent-emerald hover:opacity-95 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Neon Text/Glow Effects */
+  .text-glow-purple {
+    @apply shadow-brand-accent-purple/20;
+    text-shadow: 0 0 12px rgba(139, 92, 246, 0.3);
+  }
+
+  .text-glow-blue {
+    text-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+  }
+}
+
+/* Custom Webkit Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100 dark:bg-brand-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-slate-800 rounded-full hover:bg-slate-400 dark:hover:bg-slate-700 transition-colors;
+}
+
+/* Scroll Snap/Smooth Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom interactive background animations */
+.radial-bg {
+  background: radial-gradient(circle 800px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.06), transparent 80%),
+              radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.05), transparent 60%);
+}
+
+.dark .radial-bg {
+  background: radial-gradient(circle 800px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(59, 130, 246, 0.07), transparent 80%),
+              radial-gradient(circle 600px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(139, 92, 246, 0.06), transparent 65%);
+}
+
+/* Keyframe elements */
+.timeline-dot::after {
+  content: '';
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-accent-blue/30 dark:bg-brand-accent-purple/30 animate-ping;
+}
