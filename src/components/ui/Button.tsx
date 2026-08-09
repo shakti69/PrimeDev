@@ -39,18 +39,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     // Refined 2026 aesthetics with crisp transitions
     const baseStyles =
-      'inline-flex items-center justify-center font-medium transition-all duration-250 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-obsidian-950 disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.98]';
+      'inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-primary)] disabled:opacity-50 disabled:cursor-not-allowed select-none active:scale-[0.98]';
 
     // Variant matrices
     const variantStyles: Record<ButtonVariant, string> = {
       primary:
         'btn-shimmer bg-brand-600 hover:bg-brand-500 text-white shadow-sm hover:shadow-glow-sm border border-brand-400/30 font-semibold',
       secondary:
-        'bg-obsidian-850 hover:bg-obsidian-800 text-obsidian-100 hover:text-white border border-white/[0.08] hover:border-white/[0.18] shadow-subtle',
+        'bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] hover:text-brand-600 dark:hover:text-white border border-[var(--border-subtle)] hover:border-[var(--border-highlight)] shadow-subtle',
       outline:
-        'bg-transparent hover:bg-white/[0.05] text-obsidian-200 hover:text-white border border-white/[0.12] hover:border-white/[0.24]',
+        'bg-transparent hover:bg-black/[0.04] dark:hover:bg-white/[0.05] text-[var(--text-secondary)] hover:text-[var(--text-primary)] border border-[var(--border-highlight)]',
       ghost:
-        'bg-transparent hover:bg-white/[0.06] text-obsidian-300 hover:text-white border border-transparent',
+        'bg-transparent hover:bg-black/[0.04] dark:hover:bg-white/[0.06] text-[var(--text-muted)] hover:text-[var(--text-primary)] border border-transparent',
       danger:
         'bg-rose-600 hover:bg-rose-500 text-white border border-rose-400/30 shadow-sm',
     };

@@ -7,16 +7,26 @@ export interface UseScrollRevealOptions {
 }
 
 export function useScrollReveal<T extends HTMLElement = HTMLDivElement>({
-  threshold = 0.15,
-  rootMargin = '0px 0px -40px 0px',
+  threshold = 0.05,
+  rootMargin = '0px 0px -20px 0px',
   triggerOnce = true,
 }: UseScrollRevealOptions = {}) {
   const ref = useRef<T | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+    return false;
+  });
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
+
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsVisible(true);
+      return;
+    }
 
     // Check if IntersectionObserver is available
     if (!('IntersectionObserver' in window)) {

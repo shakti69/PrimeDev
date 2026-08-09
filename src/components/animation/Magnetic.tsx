@@ -16,6 +16,11 @@ export const Magnetic: React.FC<MagneticProps> = ({
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
+    if (typeof window !== 'undefined') {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !window.matchMedia('(hover: hover)').matches) {
+        return;
+      }
+    }
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current.getBoundingClientRect();
     const middleX = clientX - (left + width / 2);

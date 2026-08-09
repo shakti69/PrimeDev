@@ -26,15 +26,15 @@ export const Badge: React.FC<BadgeProps> = ({
 
   const variantStyles: Record<BadgeVariant, string> = {
     default:
-      'bg-obsidian-800/80 text-obsidian-300 border border-white/[0.08]',
+      'bg-black/[0.05] dark:bg-obsidian-800/80 text-[var(--text-secondary)] border border-[var(--border-subtle)]',
     accent:
-      'bg-brand-500/10 text-brand-400 border border-brand-500/25',
+      'bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/25',
     success:
-      'bg-emerald-500/10 text-emerald-400 border border-emerald-500/25',
+      'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25',
     warning:
-      'bg-amber-500/10 text-amber-400 border border-amber-500/25',
+      'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/25',
     outline:
-      'bg-transparent text-obsidian-300 border border-white/[0.12]',
+      'bg-transparent text-[var(--text-secondary)] border border-[var(--border-subtle)]',
   };
 
   const sizeStyles: Record<BadgeSize, string> = {
@@ -43,11 +43,11 @@ export const Badge: React.FC<BadgeProps> = ({
   };
 
   const dotColors: Record<BadgeVariant, string> = {
-    default: 'bg-obsidian-400',
-    accent: 'bg-brand-400',
-    success: 'bg-emerald-400',
-    warning: 'bg-amber-400',
-    outline: 'bg-obsidian-300',
+    default: 'bg-[var(--text-muted)]',
+    accent: 'bg-brand-500',
+    success: 'bg-emerald-500',
+    warning: 'bg-amber-500',
+    outline: 'bg-[var(--text-muted)]',
   };
 
   return (

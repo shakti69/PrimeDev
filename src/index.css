@@ -7,28 +7,38 @@
     --bg-primary: #06080D;
     --bg-surface: #0B0F17;
     --bg-elevated: #101622;
-    --bg-card: #161F2E;
-    --border-subtle: rgba(255, 255, 255, 0.07);
-    --border-highlight: rgba(255, 255, 255, 0.14);
+    --bg-card: rgba(16, 22, 34, 0.9);
+    --bg-card-hover: rgba(22, 31, 46, 0.95);
+    --bg-card-subtle: rgba(29, 40, 58, 0.6);
+    --bg-input: #06080D;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-highlight: rgba(255, 255, 255, 0.16);
     --text-primary: #F1F5F9;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --text-subtle: #64748B;
     --accent-cobalt: #3B82F6;
     --accent-glow: rgba(59, 130, 246, 0.18);
+    --spotlight-color: rgba(59, 130, 246, 0.12);
   }
 
   .light {
     --bg-primary: #F8FAFC;
     --bg-surface: #FFFFFF;
     --bg-elevated: #F1F5F9;
-    --bg-card: #FFFFFF;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --bg-card-hover: rgba(255, 255, 255, 1);
+    --bg-card-subtle: rgba(241, 245, 249, 0.9);
+    --bg-input: #FFFFFF;
     --border-subtle: rgba(0, 0, 0, 0.08);
-    --border-highlight: rgba(0, 0, 0, 0.15);
+    --border-highlight: rgba(0, 0, 0, 0.16);
     --text-primary: #0F172A;
-    --text-secondary: #475569;
-    --text-muted: #94A3B8;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+    --text-subtle: #94A3B8;
     --accent-cobalt: #2563EB;
-    --accent-glow: rgba(37, 99, 235, 0.12);
+    --accent-glow: rgba(37, 99, 235, 0.10);
+    --spotlight-color: rgba(37, 99, 235, 0.08);
   }
 
   html {
@@ -45,6 +55,7 @@
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   /* Accessible focus indicators for keyboard navigation */
@@ -57,16 +68,29 @@
 @layer components {
   /* Architectural Card with Precision Border Sheen */
   .prime-card {
-    @apply relative rounded-2xl bg-obsidian-900/90 dark:bg-obsidian-900/90 border border-white/[0.08] backdrop-blur-md transition-all duration-300;
+    position: relative;
+    border-radius: 1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .prime-card-interactive {
-    @apply prime-card hover:border-brand-500/40 hover:bg-obsidian-850/95 hover:shadow-card-hover hover:-translate-y-0.5;
+    @apply prime-card hover:shadow-card-hover hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  .prime-card-interactive:hover {
+    background-color: var(--bg-card-hover);
+    border-color: rgba(59, 130, 246, 0.35);
   }
 
   /* Glass Surface */
   .glass-panel {
-    @apply bg-obsidian-950/80 dark:bg-obsidian-950/80 backdrop-blur-xl border border-white/[0.08];
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
 
   /* Subtle Ambient Background Gradients */
@@ -77,6 +101,11 @@
     pointer-events: none;
     z-index: 0;
     opacity: 0.45;
+    transition: opacity 0.3s ease;
+  }
+
+  .light .ambient-glow {
+    opacity: 0.18;
   }
 
   /* Shimmer button overlay */
@@ -94,7 +123,7 @@
     background: linear-gradient(
       60deg,
       transparent 30%,
-      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.18) 50%,
       transparent 70%
     );
     transform: rotate(30deg) translateX(-100%);

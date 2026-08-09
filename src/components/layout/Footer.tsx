@@ -36,25 +36,25 @@ export const Footer: React.FC = () => {
   ];
 
   return (
-    <footer className="w-full relative bg-obsidian-950 border-t border-white/[0.08] pt-16 pb-12 overflow-hidden text-obsidian-400 font-sans">
+    <footer className="w-full relative bg-[var(--bg-surface)] border-t border-[var(--border-subtle)] pt-16 pb-12 overflow-hidden text-[var(--text-muted)] font-sans transition-colors duration-200">
       {/* Background ambient lighting */}
       <div className="ambient-glow top-0 right-1/4 w-96 h-96 bg-brand-600/10" />
       <div className="ambient-glow bottom-0 left-1/4 w-96 h-96 bg-brand-800/10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-[var(--border-subtle)]">
           {/* Brand & Mission column */}
           <div className="lg:col-span-2 space-y-4">
             <button
               onClick={() => navigate('home')}
-              className="flex items-center gap-2.5 text-left focus:outline-none"
+              className="flex items-center gap-2.5 text-left focus:outline-none group cursor-pointer"
             >
-              <BrandLogo size={32} />
-              <span className="font-bold text-lg text-obsidian-100 tracking-tight">
-                Prime<span className="text-brand-400">Dev</span>
+              <BrandLogo size={32} className="transition-transform duration-300 group-hover:scale-105" />
+              <span className="font-bold text-lg text-[var(--text-primary)] tracking-tight">
+                Prime<span className="text-brand-500 dark:text-brand-400">Dev</span>
               </span>
             </button>
-            <p className="text-sm text-obsidian-400 max-w-sm leading-relaxed">
+            <p className="text-sm text-[var(--text-muted)] max-w-sm leading-relaxed">
               Modern digital engineering foundation built with precision design tokens, responsive architecture, and refined 2026 aesthetics.
             </p>
 
@@ -71,14 +71,14 @@ export const Footer: React.FC = () => {
                 href="https://github.com/shakti69"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-xl bg-obsidian-900 border border-white/[0.08] hover:border-brand-500/40 hover:text-white transition-colors"
+                className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-brand-500/40 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors shadow-sm"
                 aria-label="GitHub repository"
               >
                 <Icons.Github className="w-4 h-4" />
               </a>
               <button
                 onClick={() => navigate('contact')}
-                className="p-2 rounded-xl bg-obsidian-900 border border-white/[0.08] hover:border-brand-500/40 hover:text-white transition-colors"
+                className="p-2 rounded-xl bg-[var(--bg-card)] border border-[var(--border-subtle)] hover:border-brand-500/40 text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors shadow-sm"
                 aria-label="Contact engineering"
               >
                 <Icons.Send className="w-4 h-4" />
@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
 
           {/* Nav Column 1: Core Navigation */}
           <div>
-            <h4 className="text-xs font-bold text-obsidian-200 uppercase tracking-wider mb-4 font-mono">
+            <h4 className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider mb-4 font-mono">
               Navigation
             </h4>
             <ul className="space-y-2.5 text-xs">
@@ -96,7 +96,7 @@ export const Footer: React.FC = () => {
                 <li key={link.label}>
                   <button
                     onClick={() => navigate(link.page, link.param)}
-                    className="hover:text-white hover:translate-x-0.5 inline-block transition-all text-left"
+                    className="text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:translate-x-0.5 inline-block transition-all text-left"
                   >
                     {link.label}
                   </button>
@@ -107,7 +107,7 @@ export const Footer: React.FC = () => {
 
           {/* Nav Column 2: Engineering Specs */}
           <div>
-            <h4 className="text-xs font-bold text-obsidian-200 uppercase tracking-wider mb-4 font-mono">
+            <h4 className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider mb-4 font-mono">
               Disciplines
             </h4>
             <ul className="space-y-2.5 text-xs">
@@ -115,7 +115,7 @@ export const Footer: React.FC = () => {
                 <li key={serv.label}>
                   <button
                     onClick={() => navigate('service-detail', serv.param)}
-                    className="hover:text-white hover:translate-x-0.5 inline-block transition-all text-left"
+                    className="text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:translate-x-0.5 inline-block transition-all text-left"
                   >
                     {serv.label}
                   </button>
@@ -126,16 +126,16 @@ export const Footer: React.FC = () => {
 
           {/* Newsletter Column */}
           <div className="space-y-3">
-            <h4 className="text-xs font-bold text-obsidian-200 uppercase tracking-wider mb-4 font-mono">
+            <h4 className="text-xs font-bold text-[var(--text-primary)] uppercase tracking-wider mb-4 font-mono">
               Updates
             </h4>
-            <p className="text-xs text-obsidian-400">
+            <p className="text-xs text-[var(--text-muted)]">
               Receive notifications for architectural releases and component updates.
             </p>
 
             {isSubscribed ? (
-              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-400 flex items-center gap-2">
-                <Icons.Check className="w-4 h-4 shrink-0 text-emerald-400" />
+              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-xs text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+                <Icons.Check className="w-4 h-4 shrink-0 text-emerald-600 dark:text-emerald-400" />
                 <span>Subscription confirmed</span>
               </div>
             ) : (
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="engineer@company.com"
                     required
-                    className="w-full px-3.5 py-2 rounded-xl bg-obsidian-900 border border-white/[0.08] text-xs text-white placeholder-obsidian-500 focus:outline-none focus:border-brand-500/50 pr-10"
+                    className="w-full px-3.5 py-2 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-brand-500/50 pr-10"
                   />
                   <button
                     type="submit"
@@ -168,12 +168,12 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom copyright & legal bar */}
-        <div className="mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-obsidian-500">
+        <div className="mt-8 pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[var(--text-subtle)]">
           <div>
             © {new Date().getFullYear()} PrimeDev — Founded by Shakti Prasad Hota. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-[11px] font-mono text-obsidian-400">Dhenkanal, Odisha, India</span>
+            <span className="text-[11px] font-mono text-[var(--text-muted)]">Dhenkanal, Odisha, India</span>
           </div>
         </div>
       </div>

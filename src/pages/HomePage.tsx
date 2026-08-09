@@ -21,7 +21,7 @@ export const HomePage: React.FC = () => {
       {/* =========================================================================
           1. HERO SECTION (HIGH IMPACT COMPOSITION)
          ========================================================================= */}
-      <Section withGrid className="pt-12 pb-24 border-b border-white/[0.08] relative overflow-hidden">
+      <Section withGrid className="pt-12 pb-24 border-b border-[var(--border-subtle)] relative overflow-hidden">
         {/* Subtle multi-layer ambient glows */}
         <div className="ambient-glow top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[380px] bg-brand-500/12" />
         <div className="ambient-glow top-1/2 right-10 w-[400px] h-[300px] bg-cyan-500/8" />
@@ -47,7 +47,7 @@ export const HomePage: React.FC = () => {
               <TextReveal
                 text="Architecting Next-Gen Full-Stack Systems & Scalable Digital Products."
                 as="h1"
-                className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-editorial text-obsidian-100 leading-[1.08] justify-center"
+                className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-editorial text-[var(--text-primary)] leading-[1.08] justify-center"
                 highlightWords={['Full-Stack', 'Systems', 'Digital', 'Products.']}
                 delay={100}
               />
@@ -55,7 +55,7 @@ export const HomePage: React.FC = () => {
 
             {/* Sub-Headline */}
             <Reveal direction="up" delay={250}>
-              <p className="text-base sm:text-xl text-obsidian-300 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base sm:text-xl text-[var(--text-muted)] max-w-2xl mx-auto leading-relaxed">
                 We engineer high-performance web platforms, multi-tenant SaaS architectures, assistive software tools, and secure cloud infrastructure.
               </p>
             </Reveal>
@@ -100,14 +100,14 @@ export const HomePage: React.FC = () => {
       <Section bordered>
         <Container>
           <div className="space-y-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.06] pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
               <div>
-                <span className="text-xs font-mono text-brand-400 block mb-1 uppercase">// 01.0 CAPABILITIES</span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-obsidian-100">
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block mb-1 uppercase">// 01.0 CAPABILITIES</span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
                   What PrimeDev Engineers
                 </h2>
               </div>
-              <p className="text-sm text-obsidian-400 max-w-md">
+              <p className="text-sm text-[var(--text-muted)] max-w-md">
                 End-to-end technical execution from modular frontend design systems to secure multi-tenant backend architectures.
               </p>
             </div>
@@ -116,16 +116,16 @@ export const HomePage: React.FC = () => {
               <Reveal direction="up" delay={0}>
                 <SpotlightCard className="p-7 space-y-4 h-full flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="p-3 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-400 w-fit">
+                    <div className="p-3 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-500 dark:text-brand-400 w-fit">
                       <Icons.Code className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg font-bold text-obsidian-100">Full-Stack Web Engineering</h3>
-                    <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed">
+                    <h3 className="text-lg font-bold text-[var(--text-primary)]">Full-Stack Web Engineering</h3>
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                       Fast, reactive web platforms engineered with React, Next.js, and TypeScript, optimized for sub-second page loads and zero layout shift.
                     </p>
                   </div>
-                  <div className="pt-4 border-t border-white/[0.05]">
-                    <span className="text-xs font-mono text-brand-400">Strict Typing • Responsive Grids</span>
+                  <div className="pt-4 border-t border-[var(--border-subtle)]">
+                    <span className="text-xs font-mono text-brand-500 dark:text-brand-400">Strict Typing • Responsive Grids</span>
                   </div>
                 </SpotlightCard>
               </Reveal>
@@ -133,16 +133,16 @@ export const HomePage: React.FC = () => {
               <Reveal direction="up" delay={150}>
                 <SpotlightCard className="p-7 space-y-4 h-full flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 w-fit">
+                    <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 w-fit">
                       <Icons.Layers className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg font-bold text-obsidian-100">Multi-Tenant Platforms & SaaS</h3>
-                    <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed">
+                    <h3 className="text-lg font-bold text-[var(--text-primary)]">Multi-Tenant Platforms & SaaS</h3>
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                       Role-based systems with granular permission tiers, automated billing calculation algorithms, dynamic PDF generators, and audit logging.
                     </p>
                   </div>
-                  <div className="pt-4 border-t border-white/[0.05]">
-                    <span className="text-xs font-mono text-emerald-400">JWT Auth • Role Hierarchies</span>
+                  <div className="pt-4 border-t border-[var(--border-subtle)]">
+                    <span className="text-xs font-mono text-emerald-600 dark:text-emerald-400">JWT Auth • Role Hierarchies</span>
                   </div>
                 </SpotlightCard>
               </Reveal>
@@ -150,16 +150,16 @@ export const HomePage: React.FC = () => {
               <Reveal direction="up" delay={300}>
                 <SpotlightCard className="p-7 space-y-4 h-full flex flex-col justify-between">
                   <div className="space-y-4">
-                    <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 w-fit">
+                    <div className="p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400 w-fit">
                       <Icons.Cpu className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg font-bold text-obsidian-100">Assistive Software & IoT</h3>
-                    <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed">
+                    <h3 className="text-lg font-bold text-[var(--text-primary)]">Assistive Software & IoT</h3>
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                       Pioneering accessible web utilities including voice-operated learning tools for visually impaired students and automated WiFi presence detectors.
                     </p>
                   </div>
-                  <div className="pt-4 border-t border-white/[0.05]">
-                    <span className="text-xs font-mono text-cyan-400">Web Speech API • Hardware Probes</span>
+                  <div className="pt-4 border-t border-[var(--border-subtle)]">
+                    <span className="text-xs font-mono text-cyan-600 dark:text-cyan-400">Web Speech API • Hardware Probes</span>
                   </div>
                 </SpotlightCard>
               </Reveal>
@@ -174,10 +174,10 @@ export const HomePage: React.FC = () => {
       <Section bordered withDots>
         <Container>
           <div className="space-y-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.06] pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
               <div>
-                <span className="text-xs font-mono text-brand-400 block mb-1 uppercase">// 02.0 SERVICES</span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-obsidian-100">
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block mb-1 uppercase">// 02.0 SERVICES</span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
                   Engineering Disciplines
                 </h2>
               </div>
@@ -205,16 +205,16 @@ export const HomePage: React.FC = () => {
                         <Badge variant="accent" size="sm">
                           {service.category}
                         </Badge>
-                        <Icons.ChevronRight className="w-4 h-4 text-obsidian-400 transition-transform group-hover:translate-x-1" />
+                        <Icons.ChevronRight className="w-4 h-4 text-[var(--text-muted)] transition-transform group-hover:translate-x-1" />
                       </div>
                       <CardTitle className="mt-2 text-xl">{service.title}</CardTitle>
                       <CardDescription className="text-sm">{service.tagline}</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <ul className="space-y-1.5 text-xs text-obsidian-300">
+                      <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
                         {service.deliverables.slice(0, 2).map((deliv, i) => (
                           <li key={i} className="flex items-center gap-2">
-                            <Icons.Check className="w-3.5 h-3.5 text-brand-400 shrink-0" />
+                            <Icons.Check className="w-3.5 h-3.5 text-brand-500 dark:text-brand-400 shrink-0" />
                             <span>{deliv}</span>
                           </li>
                         ))}
@@ -223,12 +223,12 @@ export const HomePage: React.FC = () => {
                     <CardFooter>
                       <div className="flex items-center gap-2">
                         {service.techStack.slice(0, 3).map((t) => (
-                          <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-obsidian-400">
+                          <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.04] text-[var(--text-muted)] border border-[var(--border-subtle)]">
                             {t}
                           </span>
                         ))}
                       </div>
-                      <span className="text-xs font-semibold text-brand-400">View Spec →</span>
+                      <span className="text-xs font-semibold text-brand-500 dark:text-brand-400">View Spec →</span>
                     </CardFooter>
                   </Card>
                 </Reveal>
@@ -244,14 +244,14 @@ export const HomePage: React.FC = () => {
       <Section bordered>
         <Container>
           <div className="space-y-10">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.06] pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
               <div>
-                <span className="text-xs font-mono text-brand-400 block mb-1 uppercase">// 03.0 ARCHITECTURE EXPLORER</span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-obsidian-100">
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block mb-1 uppercase">// 03.0 ARCHITECTURE EXPLORER</span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
                   Interactive System Architecture
                 </h2>
               </div>
-              <p className="text-sm text-obsidian-400 max-w-md">
+              <p className="text-sm text-[var(--text-muted)] max-w-md">
                 Click any node below to inspect real-time latency specifications, protocols, and architectural safeguards.
               </p>
             </div>
@@ -268,10 +268,10 @@ export const HomePage: React.FC = () => {
       <Section bordered withGrid>
         <Container>
           <div className="space-y-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.06] pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
               <div>
-                <span className="text-xs font-mono text-brand-400 block mb-1 uppercase">// 04.0 CASE STUDIES</span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-obsidian-100">
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block mb-1 uppercase">// 04.0 CASE STUDIES</span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
                   Selected Engineering Case Studies
                 </h2>
               </div>
@@ -309,12 +309,12 @@ export const HomePage: React.FC = () => {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-3">
-                        <p className="text-xs text-obsidian-400 line-clamp-3 leading-relaxed">
+                        <p className="text-xs text-[var(--text-muted)] line-clamp-3 leading-relaxed">
                           {project.solution}
                         </p>
                         <div className="flex flex-wrap gap-1.5 pt-2">
                           {project.techStack.slice(0, 4).map((t) => (
-                            <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/[0.04] text-obsidian-300 border border-white/[0.06]">
+                            <span key={t} className="text-[10px] font-mono px-2 py-0.5 rounded bg-black/[0.04] dark:bg-white/[0.04] text-[var(--text-secondary)] border border-[var(--border-subtle)]">
                               {t}
                             </span>
                           ))}
@@ -322,11 +322,11 @@ export const HomePage: React.FC = () => {
                       </CardContent>
                     </div>
                     <CardFooter>
-                      <span className="text-xs font-semibold text-brand-400 flex items-center gap-1">
+                      <span className="text-xs font-semibold text-brand-500 dark:text-brand-400 flex items-center gap-1">
                         Read Engineering Case Study
                         <Icons.ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                       </span>
-                      <span className="text-xs font-mono text-obsidian-500">{project.status}</span>
+                      <span className="text-xs font-mono text-[var(--text-subtle)]">{project.status}</span>
                     </CardFooter>
                   </SpotlightCard>
                 </Reveal>
@@ -342,14 +342,14 @@ export const HomePage: React.FC = () => {
       <Section bordered>
         <Container>
           <div className="space-y-12">
-            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-white/[0.06] pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[var(--border-subtle)] pb-6">
               <div>
-                <span className="text-xs font-mono text-brand-400 block mb-1 uppercase">// 05.0 LIFECYCLE</span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-obsidian-100">
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block mb-1 uppercase">// 05.0 LIFECYCLE</span>
+                <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
                   Engineering Lifecycle
                 </h2>
               </div>
-              <p className="text-sm text-obsidian-400 max-w-md">
+              <p className="text-sm text-[var(--text-muted)] max-w-md">
                 A structured 4-phase lifecycle ensuring rigorous quality, zero technical debt, and predictable delivery.
               </p>
             </div>
@@ -378,12 +378,12 @@ export const HomePage: React.FC = () => {
                 },
               ].map((phase, idx) => (
                 <Reveal key={phase.step} direction="up" delay={idx * 100}>
-                  <div className="p-6 rounded-2xl bg-obsidian-900/60 border border-white/[0.08] space-y-3 relative group hover:border-brand-500/40 transition-all h-full">
-                    <span className="text-3xl font-black font-mono text-brand-400/30 group-hover:text-brand-400 transition-colors">
+                  <div className="p-6 rounded-2xl bg-[var(--bg-card)] border border-[var(--border-subtle)] space-y-3 relative group hover:border-brand-500/40 transition-all h-full shadow-sm">
+                    <span className="text-3xl font-black font-mono text-brand-500/30 dark:text-brand-400/30 group-hover:text-brand-500 dark:group-hover:text-brand-400 transition-colors">
                       {phase.step}
                     </span>
-                    <h3 className="text-base font-bold text-obsidian-100">{phase.title}</h3>
-                    <p className="text-xs text-obsidian-400 leading-relaxed">{phase.desc}</p>
+                    <h3 className="text-base font-bold text-[var(--text-primary)]">{phase.title}</h3>
+                    <p className="text-xs text-[var(--text-muted)] leading-relaxed">{phase.desc}</p>
                   </div>
                 </Reveal>
               ))}
@@ -399,14 +399,14 @@ export const HomePage: React.FC = () => {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-mono text-brand-400 block uppercase">// 06.0 ETHOS</span>
-              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-obsidian-100">
+              <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block uppercase">// 06.0 ETHOS</span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-primary)]">
                 Built On Architectural Rigor & Craftsmanship.
               </h2>
-              <p className="text-sm sm:text-base text-obsidian-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
                 PrimeDev was founded on a singular standard: build web software that is resilient, cleanly engineered, and thoughtfully structured from the first token to the production bundle.
               </p>
-              <p className="text-xs sm:text-sm text-obsidian-400 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed">
                 Whether deploying multi-role campus management platforms or engineering speech-driven assistive tools for visually impaired learners, we prioritize maintainability, security-first authentication, and high-performance user experiences.
               </p>
               <div className="pt-2">
@@ -424,19 +424,19 @@ export const HomePage: React.FC = () => {
 
             <div className="lg:col-span-5">
               <SpotlightCard className="p-6 sm:p-8 space-y-5 border-brand-500/20">
-                <span className="text-xs font-mono text-brand-400 uppercase block">Foundational Tenets</span>
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 uppercase block">Foundational Tenets</span>
                 <div className="space-y-4">
                   <div className="space-y-1">
-                    <h4 className="text-sm font-bold text-white">01. Architecture Over Templates</h4>
-                    <p className="text-xs text-obsidian-400">Custom design tokens and decoupled modular components.</p>
+                    <h4 className="text-sm font-bold text-[var(--text-primary)]">01. Architecture Over Templates</h4>
+                    <p className="text-xs text-[var(--text-muted)]">Custom design tokens and decoupled modular components.</p>
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-sm font-bold text-white">02. Security-by-Design</h4>
-                    <p className="text-xs text-obsidian-400">Strict JWT authorization, input sanitation, and role guards.</p>
+                    <h4 className="text-sm font-bold text-[var(--text-primary)]">02. Security-by-Design</h4>
+                    <p className="text-xs text-[var(--text-muted)]">Strict JWT authorization, input sanitation, and role guards.</p>
                   </div>
                   <div className="space-y-1">
-                    <h4 className="text-sm font-bold text-white">03. Accessibility First</h4>
-                    <p className="text-xs text-obsidian-400">Semantic markup and assistive tech consideration built in.</p>
+                    <h4 className="text-sm font-bold text-[var(--text-primary)]">03. Accessibility First</h4>
+                    <p className="text-xs text-[var(--text-muted)]">Semantic markup and assistive tech consideration built in.</p>
                   </div>
                 </div>
               </SpotlightCard>
@@ -450,7 +450,7 @@ export const HomePage: React.FC = () => {
          ========================================================================= */}
       <Section className="py-20 relative overflow-hidden">
         <Container>
-          <div className="relative p-8 sm:p-14 rounded-3xl bg-gradient-to-b from-obsidian-900 via-obsidian-850 to-obsidian-900 border border-brand-500/30 text-center space-y-6 shadow-2xl overflow-hidden">
+          <div className="relative p-8 sm:p-14 rounded-3xl bg-[var(--bg-card)] border border-brand-500/30 text-center space-y-6 shadow-2xl overflow-hidden">
             {/* Ambient inner glow */}
             <div className="ambient-glow top-0 left-1/2 -translate-x-1/2 w-96 h-48 bg-brand-500/15" />
 
@@ -458,10 +458,10 @@ export const HomePage: React.FC = () => {
               <Badge variant="accent" size="sm" dot pulse>
                 Project Inquiries Open
               </Badge>
-              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
+              <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-primary)]">
                 Ready to Architect Your Next Digital Platform?
               </h2>
-              <p className="text-sm sm:text-base text-obsidian-300">
+              <p className="text-sm sm:text-base text-[var(--text-secondary)]">
                 Let&apos;s collaborate on your web engineering requirements, SaaS architecture, or custom software solution.
               </p>
               <div className="pt-4 flex flex-wrap justify-center gap-3">

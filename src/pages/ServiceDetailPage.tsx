@@ -23,19 +23,19 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
   return (
     <div className="w-full">
       {/* Breadcrumb & Hero Header */}
-      <Section withGrid className="pt-8 pb-16 border-b border-white/[0.08]">
+      <Section withGrid className="pt-8 pb-16 border-b border-[var(--border-subtle)]">
         <Container>
           <div className="space-y-6 max-w-4xl">
             {/* Breadcrumb */}
-            <div className="flex items-center gap-2 text-xs font-mono text-obsidian-400">
+            <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
               <button
                 onClick={() => navigate('services')}
-                className="hover:text-white transition-colors"
+                className="hover:text-[var(--text-primary)] transition-colors cursor-pointer"
               >
                 Services
               </button>
               <span>/</span>
-              <span className="text-brand-400">{service.title}</span>
+              <span className="text-brand-500 dark:text-brand-400 font-semibold">{service.title}</span>
             </div>
 
             <div className="space-y-4">
@@ -48,11 +48,11 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
                 </Badge>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-editorial text-obsidian-100 leading-tight">
+              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-editorial text-[var(--text-primary)] leading-tight">
                 {service.title}
               </h1>
 
-              <p className="text-lg sm:text-xl text-obsidian-300 leading-relaxed max-w-3xl">
+              <p className="text-lg sm:text-xl text-[var(--text-muted)] leading-relaxed max-w-3xl">
                 {service.tagline}
               </p>
             </div>
@@ -87,30 +87,30 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
             {/* Left 2 Cols: Deep Dive & Deliverables */}
             <div className="lg:col-span-2 space-y-10">
               <div className="space-y-4">
-                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-obsidian-100">
+                <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)]">
                   Engineering Overview
                 </h2>
-                <p className="text-sm sm:text-base text-obsidian-300 leading-relaxed">
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
                   {service.overview}
                 </p>
               </div>
 
               {/* Deliverables Checklist */}
               <div className="space-y-4">
-                <h3 className="text-lg font-bold tracking-tight text-obsidian-100 flex items-center gap-2">
-                  <Icons.Check className="w-5 h-5 text-brand-400" />
+                <h3 className="text-lg font-bold tracking-tight text-[var(--text-primary)] flex items-center gap-2">
+                  <Icons.Check className="w-5 h-5 text-brand-500 dark:text-brand-400" />
                   Key Technical Deliverables
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
                   {service.deliverables.map((item, idx) => (
                     <div
                       key={idx}
-                      className="p-4 rounded-xl bg-obsidian-900/60 border border-white/[0.06] flex items-start gap-3"
+                      className="p-4 rounded-xl bg-[var(--bg-elevated)] border border-[var(--border-subtle)] flex items-start gap-3"
                     >
-                      <div className="p-1 rounded-md bg-brand-500/10 text-brand-400 mt-0.5 shrink-0">
+                      <div className="p-1 rounded-md bg-brand-500/10 text-brand-500 dark:text-brand-400 mt-0.5 shrink-0">
                         <Icons.Check className="w-3.5 h-3.5" />
                       </div>
-                      <span className="text-sm text-obsidian-200 leading-relaxed">{item}</span>
+                      <span className="text-sm text-[var(--text-secondary)] leading-relaxed">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -118,17 +118,17 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
 
               {/* Architecture Highlights */}
               <div className="space-y-4 pt-4">
-                <h3 className="text-lg font-bold tracking-tight text-obsidian-100">
+                <h3 className="text-lg font-bold tracking-tight text-[var(--text-primary)]">
                   Architectural Pillars
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   {service.architectureHighlights.map((pillar, idx) => (
                     <Card key={idx} variant="default" className="p-5 space-y-2">
-                      <span className="text-xs font-mono text-brand-400 block">
+                      <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block">
                         0{idx + 1} // ARCH
                       </span>
-                      <h4 className="text-sm font-bold text-obsidian-100">{pillar.title}</h4>
-                      <p className="text-xs text-obsidian-400 leading-relaxed">
+                      <h4 className="text-sm font-bold text-[var(--text-primary)]">{pillar.title}</h4>
+                      <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                         {pillar.description}
                       </p>
                     </Card>
@@ -141,7 +141,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
             <div className="space-y-6">
               {/* Tech Stack Box */}
               <SpotlightCard className="p-6 space-y-4">
-                <h3 className="text-sm font-bold text-obsidian-200 uppercase tracking-wider font-mono">
+                <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono">
                   Technology Stack
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -155,13 +155,13 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
 
               {/* Target Use Cases */}
               <Card variant="default" className="p-6 space-y-3">
-                <h3 className="text-sm font-bold text-obsidian-200 uppercase tracking-wider font-mono">
+                <h3 className="text-sm font-bold text-[var(--text-primary)] uppercase tracking-wider font-mono">
                   Primary Use Cases
                 </h3>
-                <ul className="space-y-2.5 text-xs text-obsidian-300">
+                <ul className="space-y-2.5 text-xs text-[var(--text-secondary)]">
                   {service.useCases.map((uc, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <span className="text-brand-400 font-bold">•</span>
+                      <span className="text-brand-500 dark:text-brand-400 font-bold">•</span>
                       <span>{uc}</span>
                     </li>
                   ))}
@@ -169,11 +169,11 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
               </Card>
 
               {/* Engagement Consultation Card */}
-              <Card variant="interactive" className="p-6 space-y-4 border-brand-500/30">
+              <Card variant="interactive" className="p-6 space-y-4 border-brand-500/30 bg-[var(--bg-card)]">
                 <div className="space-y-1.5">
                   <Badge variant="accent" size="sm">Discovery Call</Badge>
-                  <h4 className="text-base font-bold text-white">Have a project in mind?</h4>
-                  <p className="text-xs text-obsidian-400 leading-relaxed">
+                  <h4 className="text-base font-bold text-[var(--text-primary)]">Have a project in mind?</h4>
+                  <p className="text-xs text-[var(--text-muted)] leading-relaxed">
                     Schedule an architectural discovery session to review requirements and timelines.
                   </p>
                 </div>
@@ -198,8 +198,8 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
           <div className="space-y-8">
             <div className="flex items-center justify-between">
               <div>
-                <span className="text-xs font-mono text-brand-400 block uppercase">Explore More</span>
-                <h3 className="text-xl font-bold text-obsidian-100">Other Engineering Disciplines</h3>
+                <span className="text-xs font-mono text-brand-500 dark:text-brand-400 block uppercase">Explore More</span>
+                <h3 className="text-xl font-bold text-[var(--text-primary)]">Other Engineering Disciplines</h3>
               </div>
               <Button
                 variant="outline"
@@ -227,7 +227,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({ serviceId 
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="pt-0">
-                    <div className="flex items-center text-xs font-semibold text-brand-400 gap-1 mt-2">
+                    <div className="flex items-center text-xs font-semibold text-brand-500 dark:text-brand-400 gap-1 mt-2">
                       <span>View Specification</span>
                       <Icons.ChevronRight className="w-3.5 h-3.5" />
                     </div>

@@ -13,20 +13,20 @@ export const Card: React.FC<CardProps> = ({
   ...props
 }) => {
   const variantStyles = {
-    default: 'bg-obsidian-900/90 border-white/[0.08] shadow-card',
+    default: 'bg-[var(--bg-card)] border-[var(--border-subtle)] shadow-card',
     interactive:
-      'bg-obsidian-900/90 border-white/[0.08] hover:border-brand-500/40 hover:bg-obsidian-850/95 hover:shadow-card-hover hover:-translate-y-0.5 cursor-pointer',
-    outline: 'bg-transparent border-white/[0.12] hover:border-white/[0.24]',
-    subtle: 'bg-obsidian-850/60 border-white/[0.05]',
+      'bg-[var(--bg-card)] border-[var(--border-subtle)] hover:border-brand-500/40 hover:bg-[var(--bg-card-hover)] hover:shadow-card-hover hover:-translate-y-0.5 cursor-pointer',
+    outline: 'bg-transparent border-[var(--border-subtle)] hover:border-[var(--border-highlight)]',
+    subtle: 'bg-[var(--bg-card-subtle)] border-[var(--border-subtle)]',
   };
 
   const hoverStyle = isHoverable && variant !== 'interactive' 
-    ? 'transition-all duration-300 hover:border-white/[0.16] hover:-translate-y-0.5' 
+    ? 'transition-all duration-300 hover:border-[var(--border-highlight)] hover:-translate-y-0.5' 
     : 'transition-all duration-300';
 
   return (
     <div
-      className={`relative rounded-2xl border backdrop-blur-sm overflow-hidden ${variantStyles[variant]} ${hoverStyle} ${className}`}
+      className={`relative rounded-2xl border backdrop-blur-md overflow-hidden ${variantStyles[variant]} ${hoverStyle} ${className}`}
       {...props}
     >
       {children}
@@ -43,7 +43,7 @@ export const SpotlightCard: React.FC<
   }
 > = ({
   children,
-  spotlightColor = 'rgba(59, 130, 246, 0.12)',
+  spotlightColor,
   className = '',
   ...props
 }) => {
@@ -60,20 +60,22 @@ export const SpotlightCard: React.FC<
   const handleMouseEnter = () => setOpacity(1);
   const handleMouseLeave = () => setOpacity(0);
 
+  const effectiveSpotlight = spotlightColor || 'var(--spotlight-color, rgba(59, 130, 246, 0.12))';
+
   return (
     <div
       ref={divRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-2xl border border-white/[0.08] bg-obsidian-900/90 overflow-hidden shadow-card transition-all duration-300 hover:border-brand-500/30 ${className}`}
+      className={`relative rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)] overflow-hidden shadow-card transition-all duration-300 hover:border-brand-500/30 ${className}`}
       {...props}
     >
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity,
-          background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, ${spotlightColor}, transparent 70%)`,
+          background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, ${effectiveSpotlight}, transparent 70%)`,
         }}
       />
       <div className="relative z-10">{children}</div>
@@ -97,7 +99,7 @@ export const CardTitle: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   ...props
 }) => (
   <h3
-    className={`text-lg font-bold text-obsidian-100 tracking-tight flex items-center gap-2 ${className}`}
+    className={`text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2 ${className}`}
     {...props}
   >
     {children}
@@ -109,7 +111,7 @@ export const CardDescription: React.FC<React.HTMLAttributes<HTMLParagraphElement
   className = '',
   ...props
 }) => (
-  <p className={`text-sm text-obsidian-400 leading-relaxed ${className}`} {...props}>
+  <p className={`text-sm text-[var(--text-muted)] leading-relaxed ${className}`} {...props}>
     {children}
   </p>
 );
@@ -130,7 +132,7 @@ export const CardFooter: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
   ...props
 }) => (
   <div
-    className={`p-6 pt-0 flex items-center justify-between border-t border-white/[0.05] mt-4 pt-4 text-xs text-obsidian-400 ${className}`}
+    className={`p-6 pt-0 flex items-center justify-between border-t border-[var(--border-subtle)] mt-4 pt-4 text-xs text-[var(--text-muted)] ${className}`}
     {...props}
   >
     {children}

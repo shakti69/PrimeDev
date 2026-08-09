@@ -32,9 +32,12 @@ export const RouterProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   const navigate = (page: PageId, param?: string) => {
     const targetRoute: RouteState = { page, param };
     const newHash = routeToHash(targetRoute);
-    window.location.hash = newHash;
-    setRoute(targetRoute);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.location.hash !== newHash) {
+      window.location.hash = newHash;
+    } else {
+      setRoute(targetRoute);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (

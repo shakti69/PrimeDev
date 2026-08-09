@@ -12,15 +12,46 @@ export const HeroTerminal: React.FC = () => {
     { id: 'performance', label: 'CoreTelemetry.json', icon: <Icons.Zap className="w-3.5 h-3.5" /> },
   ] as const;
 
+  const codeSnippets = {
+    architecture: `// 2026 Core Architecture Definition
+export const PrimeEngine = {
+  tier: 'Multi-Tenant Modular Enterprise',
+  frontend: ['React 19', 'Strict TypeScript', 'Tailwind Tokens'],
+  backend: ['Node.js', 'Express REST', 'MongoDB Aggregations'],
+  assistive: ['Web Speech API', 'WiFi Presence Probes'],
+  status: 'READY_FOR_ENGAGEMENT'
+};`,
+    security: `// Zero-Trust Cryptographic Guard Middleware
+async function enforceRoleGuards(req: Request) {
+  const token = req.headers.get('Authorization');
+  const verified = await jwt.verify(token, process.env.JWT_SECRET);
+  if (!verified.role.includes('ADMIN')) throw new SecurityException();
+  return { authorized: true, user: verified.id };
+}`,
+    performance: `// Core Web Vitals & Telemetry Output
+{
+  "firstContentfulPaint": "0.42s",
+  "cumulativeLayoutShift": "0.000",
+  "interactionToNextPaint": "< 16ms",
+  "bundleTypeSafety": "100% Strict",
+  "uptimeSLA": "99.98%"
+}`
+  };
+
   const handleCopy = () => {
+    try {
+      navigator.clipboard.writeText(codeSnippets[activeTab]);
+    } catch {
+      // ignore clipboard error fallback
+    }
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto rounded-2xl bg-obsidian-900/95 border border-white/[0.12] shadow-2xl backdrop-blur-xl overflow-hidden text-left font-mono">
+    <div className="w-full max-w-3xl mx-auto rounded-2xl bg-obsidian-950/95 border border-[var(--border-highlight)] shadow-2xl backdrop-blur-xl overflow-hidden text-left font-mono">
       {/* Top Header Bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-obsidian-950/80 border-b border-white/[0.08]">
+      <div className="flex items-center justify-between px-4 py-3 bg-obsidian-900/90 border-b border-white/[0.08]">
         {/* Window controls */}
         <div className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-full bg-rose-500/80" />
@@ -29,11 +60,12 @@ export const HeroTerminal: React.FC = () => {
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-1 bg-obsidian-900 p-1 rounded-lg border border-white/[0.06]">
+        <div className="flex items-center gap-1 bg-obsidian-950 p-1 rounded-lg border border-white/[0.06]">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
+              aria-selected={activeTab === tab.id}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-md text-xs transition-all ${
                 activeTab === tab.id
                   ? 'bg-brand-600 text-white shadow-sm font-semibold'
@@ -49,8 +81,9 @@ export const HeroTerminal: React.FC = () => {
         {/* Action button */}
         <button
           onClick={handleCopy}
-          className="p-1.5 rounded-md text-obsidian-400 hover:text-white hover:bg-white/[0.06] transition-colors text-xs flex items-center gap-1"
+          className="p-1.5 rounded-md text-obsidian-400 hover:text-white hover:bg-white/[0.06] transition-colors text-xs flex items-center gap-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-brand-400"
           title="Copy Code"
+          aria-label="Copy terminal code snippet"
         >
           {copied ? (
             <Icons.Check className="w-3.5 h-3.5 text-emerald-400" />

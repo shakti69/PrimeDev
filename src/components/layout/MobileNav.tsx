@@ -58,25 +58,25 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-obsidian-950/80 backdrop-blur-xl transition-opacity duration-300"
+        className="fixed inset-0 bg-black/60 dark:bg-obsidian-950/80 backdrop-blur-md transition-opacity duration-300"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
-      <div className="relative flex flex-col justify-between h-full w-full max-w-sm bg-obsidian-900 border-r border-white/[0.08] p-6 shadow-2xl animate-fade-in z-10">
+      <div className="relative flex flex-col justify-between h-full w-full max-w-sm bg-[var(--bg-surface)] border-r border-[var(--border-subtle)] p-6 shadow-2xl animate-fade-in z-10">
         <div>
           {/* Header row */}
-          <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
+          <div className="flex items-center justify-between pb-6 border-b border-[var(--border-subtle)]">
             <div className="flex items-center gap-2.5">
               <BrandLogo size={32} />
-              <span className="font-bold text-base text-obsidian-100 tracking-tight">
-                Prime<span className="text-brand-400">Dev</span>
+              <span className="font-bold text-base text-[var(--text-primary)] tracking-tight">
+                Prime<span className="text-brand-500 dark:text-brand-400">Dev</span>
               </span>
             </div>
             <button
               onClick={onClose}
-              className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-obsidian-400 hover:text-white hover:bg-white/[0.06] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+              className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
               aria-label="Close navigation"
             >
               <Icons.X className="w-5 h-5" />
@@ -100,8 +100,8 @@ export const MobileNav: React.FC<MobileNavProps> = ({
                   style={{ animationDelay: `${idx * 40}ms` }}
                   className={`w-full min-h-[44px] flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${
                     isActive
-                      ? 'bg-brand-500/10 text-brand-400 border border-brand-500/20 font-semibold'
-                      : 'text-obsidian-300 hover:text-white hover:bg-white/[0.04]'
+                      ? 'bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/25 font-semibold'
+                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.04] dark:hover:bg-white/[0.04]'
                   }`}
                 >
                   <span>{item.label}</span>
@@ -113,7 +113,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
         </div>
 
         {/* Bottom CTA & footer */}
-        <div className="pt-6 border-t border-white/[0.08] space-y-3">
+        <div className="pt-6 border-t border-[var(--border-subtle)] space-y-3">
           <Button
             variant="primary"
             size="md"
@@ -129,7 +129,7 @@ export const MobileNav: React.FC<MobileNavProps> = ({
             Start Project Inquiry
           </Button>
 
-          <p className="text-[11px] text-center text-obsidian-500">
+          <p className="text-[11px] text-center text-[var(--text-subtle)]">
             © {new Date().getFullYear()} PrimeDev Engineering.
           </p>
         </div>

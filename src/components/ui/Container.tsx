@@ -49,7 +49,7 @@ export const Section: React.FC<SectionProps> = ({
   return (
     <section
       className={`relative py-16 sm:py-24 overflow-hidden ${
-        bordered ? 'border-b border-white/[0.06]' : ''
+        bordered ? 'border-b border-[var(--border-subtle)]' : ''
       } ${withGrid ? 'bg-grid' : ''} ${withDots ? 'bg-dots' : ''} ${className}`}
       {...props}
     >

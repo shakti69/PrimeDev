@@ -11,15 +11,21 @@ export const PageTransition: React.FC<PageTransitionProps> = ({ children, pageKe
   const [transform, setTransform] = useState('translateY(0px)');
 
   useEffect(() => {
-    // Quick micro-fade on route change
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setDisplayChildren(children);
+      setOpacity(1);
+      setTransform('translateY(0px)');
+      return;
+    }
+
     setOpacity(0);
-    setTransform('translateY(6px)');
+    setTransform('translateY(4px)');
 
     const timer = setTimeout(() => {
       setDisplayChildren(children);
       setOpacity(1);
       setTransform('translateY(0px)');
-    }, 80);
+    }, 40);
 
     return () => clearTimeout(timer);
   }, [pageKey, children]);
@@ -29,7 +35,7 @@ export const PageTransition: React.FC<PageTransitionProps> = ({ children, pageKe
       style={{
         opacity,
         transform,
-        transition: 'opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
         willChange: 'opacity, transform',
       }}
       className="w-full"

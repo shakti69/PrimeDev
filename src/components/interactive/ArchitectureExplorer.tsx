@@ -80,23 +80,23 @@ export const ArchitectureExplorer: React.FC = () => {
             <button
               key={node.id}
               onClick={() => setSelectedNode(node)}
-              className={`p-3.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between gap-2 ${
+              className={`p-3.5 rounded-xl border text-left transition-all duration-200 flex flex-col justify-between gap-2 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${
                 isSelected
-                  ? 'bg-obsidian-850 border-brand-500/50 shadow-glow-sm'
-                  : 'bg-obsidian-900/60 border-white/[0.06] hover:border-white/[0.12] hover:bg-obsidian-850/60'
+                  ? 'bg-brand-500/10 dark:bg-obsidian-850 border-brand-500/50 shadow-glow-sm'
+                  : 'bg-[var(--bg-card)] border-[var(--border-subtle)] hover:border-brand-500/30 hover:bg-[var(--bg-card-hover)]'
               }`}
             >
               <div className="flex items-center justify-between">
                 {node.icon}
                 {isSelected && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-ping" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-ping" />
                 )}
               </div>
               <div>
-                <span className="text-[10px] font-mono text-obsidian-400 block uppercase">
+                <span className="text-[10px] font-mono text-[var(--text-muted)] block uppercase">
                   {node.category}
                 </span>
-                <span className="text-xs font-bold text-obsidian-100 block truncate">
+                <span className="text-xs font-bold text-[var(--text-primary)] block truncate">
                   {node.name}
                 </span>
               </div>
@@ -121,11 +121,11 @@ export const ArchitectureExplorer: React.FC = () => {
               </Badge>
             </div>
 
-            <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] tracking-tight">
               {selectedNode.name}
             </h3>
 
-            <p className="text-sm text-obsidian-300 leading-relaxed">
+            <p className="text-sm text-[var(--text-muted)] leading-relaxed">
               {selectedNode.description}
             </p>
 
@@ -133,16 +133,16 @@ export const ArchitectureExplorer: React.FC = () => {
               {selectedNode.features.map((feat, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-obsidian-950/80 border border-white/[0.06] text-xs text-obsidian-200"
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[var(--bg-elevated)] border border-[var(--border-subtle)] text-xs text-[var(--text-secondary)]"
                 >
-                  <Icons.Check className="w-3.5 h-3.5 text-brand-400" />
+                  <Icons.Check className="w-3.5 h-3.5 text-brand-500 dark:text-brand-400" />
                   <span>{feat}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="lg:col-span-4 p-5 rounded-xl bg-obsidian-950/90 border border-white/[0.08] font-mono text-xs text-obsidian-300 space-y-2">
+          <div className="lg:col-span-4 p-5 rounded-xl bg-obsidian-950/95 border border-white/[0.08] font-mono text-xs text-obsidian-300 space-y-2 shadow-lg">
             <div className="text-[10px] text-obsidian-500 uppercase border-b border-white/[0.06] pb-1">
               Node Telemetry
             </div>
