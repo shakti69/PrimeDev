@@ -1,0 +1,5 @@
+# PrimeDev Robots Configuration
+User-agent: *
+Allow: /
+
+Sitemap: https://shakti69.github.io/PrimeDev/sitemap.xml

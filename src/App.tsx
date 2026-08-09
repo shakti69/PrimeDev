@@ -1,54 +1,63 @@
 import React from 'react';
 import { ThemeProvider } from './context/ThemeContext';
-import { LanguageProvider } from './context/LanguageContext';
-import { Header } from './components/layout/Header';
-import { Hero } from './components/home/Hero';
-import { About } from './components/home/About';
-import { Services } from './components/home/Services';
-import { Portfolio } from './components/home/Portfolio';
-import { Team } from './components/home/Team';
-import { Pricing } from './components/home/Pricing';
-import { Location } from './components/home/Location';
-import { Contact } from './components/home/Contact';
-import { Blog } from './components/home/Blog';
-import { Careers } from './components/home/Careers';
-import { FAQ } from './components/home/FAQ';
-import { Footer } from './components/layout/Footer';
-import { AIChatWidget } from './components/shared/AIChatWidget';
-import { CookieConsent } from './components/shared/CookieConsent';
+import { RouterProvider, useRouter } from './context/RouterContext';
+import { Layout } from './components/layout/Layout';
+import { PageTransition } from './components/animation/PageTransition';
+import { useSEO } from './hooks/useSEO';
+
+// Core Pages
+import { HomePage } from './pages/HomePage';
+import { AboutPage } from './pages/AboutPage';
+import { ServicesPage } from './pages/ServicesPage';
+import { ServiceDetailPage } from './pages/ServiceDetailPage';
+import { WorkPage } from './pages/WorkPage';
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
+import { ContactPage } from './pages/ContactPage';
+
+const AppContent: React.FC = () => {
+  const { route } = useRouter();
+  useSEO(route);
+
+  const renderCurrentPage = () => {
+    switch (route.page) {
+      case 'home':
+        return <HomePage />;
+      case 'about':
+        return <AboutPage />;
+      case 'services':
+        return <ServicesPage />;
+      case 'service-detail':
+        return <ServiceDetailPage serviceId={route.param} />;
+      case 'work':
+        return <WorkPage />;
+      case 'project-detail':
+        return <ProjectDetailPage projectId={route.param} />;
+      case 'contact':
+        return <ContactPage />;
+      default:
+        return <HomePage />;
+    }
+  };
+
+  const pageKey = route.page + (route.param ? `-${route.param}` : '');
+
+  return (
+    <Layout>
+      <PageTransition pageKey={pageKey}>
+        {renderCurrentPage()}
+      </PageTransition>
+    </Layout>
+  );
+};
 
 export const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <LanguageProvider>
-        <div className="relative min-h-screen bg-brand-light dark:bg-brand-dark text-slate-800 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden selection:bg-brand-accent-blue/30">
-          {/* Main sticky navigation */}
-          <Header />
-          
-          {/* Page segments */}
-          <main className="w-full">
-            <Hero />
-            <About />
-            <Services />
-            <Portfolio />
-            <Team />
-            <Pricing />
-            <Location />
-            <Contact />
-            <Blog />
-            <Careers />
-            <FAQ />
-          </main>
-          
-          {/* Brand Footer */}
-          <Footer />
-          
-          {/* Floating client support widgets */}
-          <AIChatWidget />
-          <CookieConsent />
-        </div>
-      </LanguageProvider>
+      <RouterProvider>
+        <AppContent />
+      </RouterProvider>
     </ThemeProvider>
   );
 };
+
 export default App;
