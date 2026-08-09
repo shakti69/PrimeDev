@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { MessageSquare, X, Send, Bot, Sparkles, MessageCircle } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Sparkles, Mail } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { generateAIResponse } from '../../utils/ai';
 
@@ -124,15 +124,13 @@ export const AIChatWidget: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-1.5">
-              {/* WhatsApp Redirection */}
+              {/* Direct Mail Inquiry */}
               <a 
-                href="https://wa.me/15550199?text=Hi%20PrimeDev!%20I%20would%20like%20to%20learn%20more%20about%20your%20services."
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Chat on WhatsApp"
-                className="p-2 rounded-full hover:bg-emerald-500/10 text-emerald-500 transition-colors"
+                href="mailto:shaktiprasadhota07@gmail.com?subject=PrimeDev%20Inquiry"
+                title="Email Us Directly"
+                className="p-2 rounded-full hover:bg-brand-accent-blue/10 text-brand-accent-blue transition-colors"
               >
-                <MessageCircle className="w-5 h-5" />
+                <Mail className="w-5 h-5" />
               </a>
               <button 
                 onClick={() => setIsOpen(false)}

@@ -8,9 +8,11 @@ export interface TeamMember {
   };
   skills: { name: string; percentage: number }[];
   socials: {
-    linkedin: string;
+    linkedin?: string;
     github?: string;
     twitter?: string;
+    instagram?: string;
+    youtube?: string;
   };
   bios: {
     en: string;
@@ -23,128 +25,77 @@ export interface TeamMember {
 export const teamData: TeamMember[] = [
   {
     id: 't1',
-    name: 'Elena Rostova',
+    name: 'Shakti Prasad Hota',
     positions: {
-      en: "Founder & CEO",
-      es: "Fundadora y CEO",
-      de: "Gründerin & CEO"
+      en: "Founder & Lead Full-Stack / Cybersecurity Specialist",
+      es: "Fundador y Especialista Líder en Full-Stack / Ciberseguridad",
+      de: "Gründer & Leitender Full-Stack- / Cybersicherheits-Spezialist"
     },
     skills: [
-      { name: "Digital Strategy", percentage: 98 },
-      { name: "Business Growth", percentage: 95 },
-      { name: "Product Design", percentage: 88 },
-      { name: "Public Speaking", percentage: 92 }
+      { name: "Full-Stack (React / Node.js)", percentage: 95 },
+      { name: "Cybersecurity & Kali Linux", percentage: 92 },
+      { name: "Networking & System Architecture", percentage: 94 },
+      { name: "UI/UX & Creative Media", percentage: 90 }
     ],
     socials: {
-      linkedin: "https://linkedin.com/in/elena-rostova",
-      twitter: "https://twitter.com/elena_rostova"
+      github: "https://github.com/shakti69",
+      instagram: "https://www.instagram.com/shakti_gamer69",
+      youtube: "https://youtube.com/@shakti_bajarangi"
     },
     bios: {
-      en: "Elena has spent 12 years consulting Fortune 500 firms on tech transformations. She established PrimeDev to bridge modern frontends with robust enterprise engines.",
-      es: "Elena cuenta con 12 años de experiencia asesorando a empresas Fortune 500 en transformación digital. Creó PrimeDev para unir interfaces web con robustos motores empresariales.",
-      de: "Elena berät seit 12 Jahren Fortune-500-Unternehmen bei der digitalen Transformation. Sie gründete PrimeDev, um moderne Frontends mit robusten Enterprise-Architekturen zu verbinden."
+      en: "Passionate computer science engineer and cybersecurity explorer dedicated to building secure, high-performance web applications, accessible digital tools, and scalable software solutions.",
+      es: "Ingeniero apasionado de ciencias de la computación y explorador de ciberseguridad dedicado a construir aplicaciones web seguras, de alto rendimiento y herramientas digitales accesibles.",
+      de: "Leidenschaftlicher Informatiker und Cybersicherheits-Experte, spezialisiert auf sichere, hochperformante Webanwendungen, barrierefreie Tools und skalierbare Softwarelösungen."
     },
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80"
+    image: "/images/profile.png"
   },
   {
     id: 't2',
-    name: 'Marcus Vance',
+    name: 'PrimeDev Engineering Core',
     positions: {
-      en: "Lead Fullstack Developer",
-      es: "Desarrollador Fullstack Principal",
-      de: "Lead Fullstack Entwickler"
+      en: "Full-Stack Development & API Architects",
+      es: "Desarrollo Full-Stack y Arquitectura de APIs",
+      de: "Full-Stack-Entwicklung & API-Architektur"
     },
     skills: [
-      { name: "React / Next.js", percentage: 98 },
-      { name: "Node.js / APIs", percentage: 95 },
-      { name: "TypeScript", percentage: 96 },
-      { name: "System Architecture", percentage: 92 }
+      { name: "React / Vite / TypeScript", percentage: 96 },
+      { name: "Express / Node.js / MongoDB", percentage: 94 },
+      { name: "REST APIs & Auth (JWT/OTP)", percentage: 95 },
+      { name: "Tailwind CSS & Motion", percentage: 92 }
     ],
     socials: {
-      linkedin: "https://linkedin.com/in/marcus-vance",
-      github: "https://github.com/marcusvance",
-      twitter: "https://twitter.com/marcusv_dev"
+      github: "https://github.com/shakti69"
     },
     bios: {
-      en: "Marcus is an open-source contributor and performance extremist. He is obsessed with page speed budgets, atomic design libraries, and clean repository code.",
-      es: "Marcus es colaborador de código abierto y fanático del rendimiento. Está obsesionado con los presupuestos de carga, librerías de diseño atómico y código limpio.",
-      de: "Marcus ist Open-Source-Contributor und Performance-Enthusiast. Er optimiert Ladezeiten bis ins kleinste Detail und liebt saubere Code-Architekturen."
+      en: "Our core engineering group specializing in clean modular code, responsive interfaces, role-based database operations, and high-speed API microservices.",
+      es: "Nuestro equipo central de ingeniería especializado en código limpio y modular, interfaces responsivas, bases de datos con roles y microservicios API.",
+      de: "Unser Kernentwickler-Team für sauberen modularen Code, responsive Benutzeroberflächen, rollenbasierte Datenbanksysteme und performante APIs."
     },
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80"
+    image: "/favicon.svg"
   },
   {
     id: 't3',
-    name: 'Suki Chen',
+    name: 'PrimeDev Media & Creative Lab',
     positions: {
-      en: "Lead UI/UX Designer",
-      es: "Diseñadora UI/UX Principal",
-      de: "Lead UI/UX Designerin"
+      en: "Creative Direction, UI/UX & E-Sports Production",
+      es: "Dirección Creativa, UI/UX y Producción de E-Sports",
+      de: "Kreativdirektion, UI/UX & E-Sports-Produktion"
     },
     skills: [
-      { name: "UI/UX & Figma", percentage: 98 },
-      { name: "Design Systems", percentage: 95 },
-      { name: "Motion Design", percentage: 90 },
-      { name: "User Research", percentage: 85 }
+      { name: "UI/UX & Visual Layouts", percentage: 95 },
+      { name: "Video Production & Editing", percentage: 92 },
+      { name: "E-Sports Casting & Hosting", percentage: 94 },
+      { name: "Creative Scriptwriting", percentage: 88 }
     ],
     socials: {
-      linkedin: "https://linkedin.com/in/suki-chen",
-      twitter: "https://twitter.com/sukichen_design"
+      youtube: "https://youtube.com/@shakti_bajarangi",
+      instagram: "https://www.instagram.com/shakti_gamer69"
     },
     bios: {
-      en: "Suki creates interfaces that are beautiful, intuitive, and highly accessible. She translates complex user requirements into stunning, clean visual flows.",
-      es: "Suki crea interfaces hermosas, intuitivas y accesibles. Traduce requisitos complejos de usuario en flujos visuales limpios y atractivos.",
-      de: "Suki entwirft Benutzeroberflächen, die nicht nur schön, sondern auch intuitiv und barrierefrei sind. Sie übersetzt komplexe Anforderungen in visuelle Erlebnisse."
+      en: "Delivering energetic media presentations, gaming event broadcasting, video storytelling, and accessible user experiences that captivate audiences.",
+      es: "Ofreciendo presentaciones de medios enérgicas, transmisiones de eventos de gaming, edición de video y experiencias de usuario atractivas.",
+      de: "Verantwortlich für mitreißende Medienpräsentationen, E-Sports-Broadcasting, Storytelling und barrierefreie UI/UX-Konzepte."
     },
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    id: 't4',
-    name: 'David Miller',
-    positions: {
-      en: "Senior Backend Developer",
-      es: "Desarrollador Backend Senior",
-      de: "Senior Backend-Entwickler"
-    },
-    skills: [
-      { name: "Express / NestJS", percentage: 94 },
-      { name: "MongoDB / PostgreSQL", percentage: 96 },
-      { name: "AWS & Docker", percentage: 90 },
-      { name: "Security & JWT", percentage: 95 }
-    ],
-    socials: {
-      linkedin: "https://linkedin.com/in/david-miller",
-      github: "https://github.com/davidmiller-backend"
-    },
-    bios: {
-      en: "David constructs secure and highly scalable microservices. He oversees databases, cache layers, validation structures, and data encryption.",
-      es: "David construye microservicios seguros y altamente escalables. Supervisa bases de datos, capas de caché, estructuras de validación y encriptación de datos.",
-      de: "David entwickelt sichere und hochskalierbare Microservices. Er überwacht Datenbanken, Caching-Layer, Validierungsstrukturen und Datenverschlüsselung."
-    },
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=500&q=80"
-  },
-  {
-    id: 't5',
-    name: 'Sarah Jenkins',
-    positions: {
-      en: "Marketing Specialist",
-      es: "Especialista en Marketing",
-      de: "Marketing-Spezialistin"
-    },
-    skills: [
-      { name: "Growth Marketing", percentage: 95 },
-      { name: "SEO & Content", percentage: 92 },
-      { name: "Data Analytics", percentage: 88 },
-      { name: "Brand Strategy", percentage: 90 }
-    ],
-    socials: {
-      linkedin: "https://linkedin.com/in/sarah-jenkins",
-      twitter: "https://twitter.com/sarahj_marketing"
-    },
-    bios: {
-      en: "Sarah helps clients acquire organic traffic and optimize conversion funnels. She links brand assets with targeted digital campaigns to maximize growth.",
-      es: "Sarah ayuda a los clientes a adquirir tráfico orgánico y optimizar embudos de conversión. Vincula activos de marca con campañas de marketing.",
-      de: "Sarah hilft Kunden dabei, organischen Traffic zu generieren und Konversionspfade zu optimieren. Sie verknüpft Markenidentitäten mit Kampagnen."
-    },
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=500&q=80"
+    image: "/favicon.svg"
   }
 ];

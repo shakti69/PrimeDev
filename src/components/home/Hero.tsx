@@ -67,10 +67,10 @@ export const Hero: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const countProjects = useCountUp(280, 2000, isIntersecting);
-  const countClients = useCountUp(150, 2000, isIntersecting);
-  const countYears = useCountUp(8, 2000, isIntersecting);
-  const countTeam = useCountUp(12, 2000, isIntersecting);
+  const countProjects = useCountUp(15, 2000, isIntersecting);
+  const countTech = useCountUp(12, 2000, isIntersecting);
+  const countSolutions = useCountUp(6, 2000, isIntersecting);
+  const countUptime = useCountUp(99, 2000, isIntersecting);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -188,33 +188,33 @@ export const Hero: React.FC = () => {
             </span>
           </div>
 
-          {/* Happy Clients */}
+          {/* Core Technologies */}
           <div className="text-center space-y-1 border-l border-slate-200/50 dark:border-slate-800/50">
             <span className="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-cyan to-brand-accent-emerald block">
-              {countClients}+
+              {countTech}+
             </span>
             <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              {t('hero.stats.clients')}
+              Core Tech Stack
             </span>
           </div>
 
-          {/* Years of Experience */}
+          {/* Flagship Solutions */}
           <div className="text-center space-y-1 border-l border-slate-200/50 dark:border-slate-800/50">
             <span className="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-emerald to-brand-accent-purple block">
-              {countYears}+
+              {countSolutions}+
             </span>
             <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              {t('hero.stats.experience')}
+              Live Platforms
             </span>
           </div>
 
-          {/* Team Members */}
+          {/* Code Quality & Uptime */}
           <div className="text-center space-y-1 border-l border-slate-200/50 dark:border-slate-800/50">
             <span className="text-2xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-purple to-brand-accent-blue block">
-              {countTeam}+
+              {countUptime}%
             </span>
             <span className="text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
-              {t('hero.stats.team')}
+              Code Reliability
             </span>
           </div>
         </div>

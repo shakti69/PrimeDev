@@ -40,7 +40,7 @@ export const ClientDashboard: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const validEmails = ['client@primedev.com', 'liam@veloce.com'];
+    const validEmails = ['client@primedev.com', 'campus@primedev.com'];
     if (validEmails.includes(email) && password === 'password123') {
       setIsLoggedIn(true);
       setError('');
@@ -49,7 +49,7 @@ export const ClientDashboard: React.FC = () => {
       sessionStorage.setItem('primedev_client_email', email);
       loadDashboardData(email);
     } else {
-      setError('Invalid email or password. Hint: client@primedev.com or liam@veloce.com (Password: password123)');
+      setError('Invalid email or password. Demo Hint: client@primedev.com or campus@primedev.com (Password: password123)');
     }
   };
 
@@ -189,14 +189,14 @@ export const ClientDashboard: React.FC = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white/40 dark:bg-slate-900/40 border border-slate-200/50 dark:border-slate-800/50 p-6 rounded-3xl mb-6 backdrop-blur-md">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-gradient-to-r from-brand-accent-blue to-brand-accent-purple flex items-center justify-center text-white font-bold text-lg">
-            A
+            {project?.name ? project.name.charAt(0).toUpperCase() : 'P'}
           </div>
           <div>
             <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-              {t('dashboard.welcome')}, Elena & Team
+              {t('dashboard.welcome')}, Client Partner
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400">
-              Company: **Aether SaaS Platform** • Project ID: `pd-proj-783`
+              Project: **{project?.name || 'Active Platform'}** • Status: {project?.status || 'Active'}
             </p>
           </div>
         </div>

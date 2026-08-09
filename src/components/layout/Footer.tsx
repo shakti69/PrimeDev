@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import db from '../../utils/db';
 
@@ -9,17 +9,10 @@ const GithubIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-const LinkedinIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const YoutubeIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-    <rect x="2" y="9" width="4" height="12" />
-    <circle cx="4" cy="4" r="2" />
-  </svg>
-);
-
-const TwitterIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
   </svg>
 );
 
@@ -68,17 +61,18 @@ export const Footer: React.FC = () => {
     { id: 'about', label: t('nav.about') },
     { id: 'services', label: t('nav.services') },
     { id: 'portfolio', label: t('nav.portfolio') },
+    { id: 'team', label: t('nav.team') },
     { id: 'pricing', label: t('nav.pricing') },
     { id: 'blog', label: t('nav.blog') },
     { id: 'careers', label: t('nav.careers') }
   ];
 
   const services = [
-    "Website Development",
-    "E-Commerce Development",
-    "Web Application Development",
-    "UI/UX Product Design",
-    "Cloud Solutions"
+    "Full-Stack Web Development",
+    "Hostel & Campus Management Systems",
+    "Smart IoT & WiFi Attendance",
+    "Accessible & Assistive Web Tools",
+    "Cybersecurity & Code Audits"
   ];
 
   const handleNavClick = (id: string) => {
@@ -108,29 +102,44 @@ export const Footer: React.FC = () => {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <img 
-              src="/logo.jpg" 
+              src="/favicon.svg" 
               alt="PrimeDev Logo" 
-              className="w-8 h-8 object-cover object-top rounded-lg shadow-md border border-slate-800" 
+              className="w-8 h-8 rounded-lg shadow-md" 
             />
             <span className="text-lg font-bold tracking-tight text-white">
               Prime<span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent-blue to-brand-accent-cyan">Dev</span>
             </span>
           </div>
           <p className="text-xs leading-relaxed">
-            {t('footer.desc')}
+            Engineering robust full-stack web applications, campus automation systems, accessible software, and cybersecurity solutions. Founded by Shakti Prasad Hota.
           </p>
-          {/* Social Icons */}
+          {/* Official Social Icons */}
           <div className="flex items-center gap-3 pt-2">
-            <a href="https://github.com/primedev" target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-slate-800 hover:bg-brand-accent-blue hover:text-white transition-all duration-300" title="GitHub">
+            <a 
+              href="https://github.com/shakti69" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-2 rounded-xl bg-slate-800 hover:bg-brand-accent-blue hover:text-white transition-all duration-300" 
+              title="GitHub - shakti69"
+            >
               <GithubIcon className="w-4 h-4" />
             </a>
-            <a href="https://linkedin.com/company/primedev" target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-slate-800 hover:bg-brand-accent-blue hover:text-white transition-all duration-300" title="LinkedIn">
-              <LinkedinIcon className="w-4 h-4" />
+            <a 
+              href="https://youtube.com/@shakti_bajarangi?si=8yWsdrIuK3BTiRo_" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-2 rounded-xl bg-slate-800 hover:bg-red-600 hover:text-white transition-all duration-300" 
+              title="YouTube - @shakti_bajarangi"
+            >
+              <YoutubeIcon className="w-4 h-4" />
             </a>
-            <a href="https://twitter.com/primedev" target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-slate-800 hover:bg-brand-accent-blue hover:text-white transition-all duration-300" title="Twitter/X">
-              <TwitterIcon className="w-4 h-4" />
-            </a>
-            <a href="https://instagram.com/primedev" target="_blank" rel="noopener noreferrer" className="p-2 rounded-xl bg-slate-800 hover:bg-brand-accent-blue hover:text-white transition-all duration-300" title="Instagram">
+            <a 
+              href="https://www.instagram.com/shakti_gamer69?igsh=MW9mbmNoeGFiNmNnaA==" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="p-2 rounded-xl bg-slate-800 hover:bg-pink-600 hover:text-white transition-all duration-300" 
+              title="Instagram - @shakti_gamer69"
+            >
               <InstagramIcon className="w-4 h-4" />
             </a>
           </div>
@@ -174,13 +183,13 @@ export const Footer: React.FC = () => {
           </ul>
         </div>
 
-        {/* Column 4: Newsletter */}
+        {/* Column 4: Newsletter & Contact */}
         <div className="space-y-4">
           <h4 className="text-sm font-bold text-white uppercase tracking-wider border-l-2 border-brand-accent-cyan pl-2.5">
             {t('footer.newsletter')}
           </h4>
           <p className="text-xs leading-relaxed">
-            {t('footer.newsletterDesc')}
+            Subscribe for occasional updates on web architectures, project releases, and cybersecurity notes.
           </p>
 
           {isSubscribed ? (
@@ -218,19 +227,17 @@ export const Footer: React.FC = () => {
             </form>
           )}
 
-          {/* Contact Details Small */}
+          {/* Contact Details */}
           <div className="pt-2 space-y-2 text-[10px] border-t border-slate-800/80">
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-brand-accent-blue shrink-0" />
-              <span>100 Innovation Way, Silicon Valley, CA</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-brand-accent-purple shrink-0" />
-              <span>+1 (555) 0199</span>
+              <span>Dhenkanal, Odisha, India</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-brand-accent-cyan shrink-0" />
-              <span>hello@primedev.com</span>
+              <a href="mailto:shaktiprasadhota07@gmail.com" className="hover:text-white">
+                shaktiprasadhota07@gmail.com
+              </a>
             </div>
           </div>
         </div>
@@ -238,7 +245,7 @@ export const Footer: React.FC = () => {
 
       {/* Bottom bar */}
       <div className="max-w-7xl mx-auto px-6 border-t border-slate-800/80 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] text-slate-500 font-medium">
-        <span>© {new Date().getFullYear()} PrimeDev Inc. {t('footer.copyright')}</span>
+        <span>© {new Date().getFullYear()} PrimeDev — Shakti Prasad Hota. All rights reserved.</span>
         <div className="flex gap-4">
           <a href="#privacy" className="hover:text-slate-400">Privacy Policy</a>
           <a href="#terms" className="hover:text-slate-400">Terms of Service</a>

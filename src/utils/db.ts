@@ -88,21 +88,7 @@ const saveToStorage = <T>(key: string, value: T): void => {
 export const db = {
   // Appointments
   getAppointments: (): Appointment[] => {
-    const defaultApps: Appointment[] = [
-      {
-        id: 'appt-1',
-        name: 'John Client',
-        email: 'client@primedev.com',
-        phone: '+1 555-0199',
-        service: 'SaaS Development',
-        date: '2026-06-28',
-        timeSlot: '14:00 - 15:00',
-        message: 'Discussing milestone 4 APIs.',
-        status: 'confirmed',
-        createdAt: '2026-06-20'
-      }
-    ];
-    return getFromStorage<Appointment[]>(KEYS.APPOINTMENTS, defaultApps);
+    return getFromStorage<Appointment[]>(KEYS.APPOINTMENTS, []);
   },
   
   addAppointment: (app: Omit<Appointment, 'id' | 'status' | 'createdAt'>): Appointment => {

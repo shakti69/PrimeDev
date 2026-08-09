@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, DollarSign, Calendar, Upload, X, CheckCircle2 } from 'lucide-react';
+import { Upload, X, CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import db from '../../utils/db';
 
@@ -29,172 +29,158 @@ export const Careers: React.FC = () => {
     {
       id: 'j1',
       titles: {
-        en: "Lead React & Next.js Engineer",
-        es: "Ingeniero Principal de React y Next.js",
-        de: "Lead React- & Next.js Entwickler"
+        en: "Full-Stack Web Engineer (React / Node.js)",
+        es: "Ingeniero Web Full-Stack (React / Node.js)",
+        de: "Full-Stack Webentwickler (React / Node.js)"
       },
       department: "Engineering",
-      location: "Remote / Silicon Valley",
-      salary: "$120,000 - $150,000 / yr",
+      location: "Remote / Odisha",
+      salary: "Competitive / Project-based",
       requirements: [
-        "4+ Years of professional React/TypeScript engineering",
-        "Expert knowledge of Next.js 14+ App Router & Server Components",
-        "Strong CSS/Tailwind skills with core performance metrics budgeting",
-        "Experience building high-frequency REST & GraphQL APIs"
+        "Strong proficiency in React, TypeScript, and modern Tailwind CSS",
+        "Experience building Node.js, Express, and MongoDB backend APIs",
+        "Understanding of JWT authentication and secure session handling",
+        "Commitment to clean architecture and responsive mobile layouts"
       ]
     },
     {
       id: 'j2',
       titles: {
-        en: "Senior UI/UX Designer",
-        es: "Diseñador UI/UX Senior",
-        de: "Senior UI/UX Designer"
+        en: "UI/UX & Creative Media Designer",
+        es: "Diseñador UI/UX y Medios Creativos",
+        de: "UI/UX- & Creative-Media-Designer"
       },
-      department: "Product Design",
-      location: "Hybrid / Silicon Valley",
-      salary: "$100,000 - $130,000 / yr",
+      department: "Creative Lab",
+      location: "Remote / Hybrid",
+      salary: "Competitive / Project-based",
       requirements: [
-        "3+ Years designing web apps, dashboards & SaaS products",
-        "Advanced Figma prototyping, wireframing & design system management",
-        "Strong understanding of modern accessibility standards (WCAG)",
-        "Portfolio demonstrating sleek typography & motion designs"
+        "Proficiency in Figma prototyping, wireframing & design system management",
+        "Eye for modern typography, micro-interactions, and dark mode aesthetics",
+        "Knowledge of accessibility (WCAG) guidelines and user journey mapping",
+        "Optional: Video editing and motion graphics experience"
       ]
     },
     {
       id: 'j3',
       titles: {
-        en: "Backend microservices Developer",
-        es: "Desarrollador de Microservicios Backend",
-        de: "Backend-Entwickler (Microservices)"
+        en: "Cybersecurity & QA Audit Specialist",
+        es: "Especialista en Auditoría de Ciberseguridad y QA",
+        de: "Cybersicherheits- & QA-Spezialist"
       },
-      department: "Engineering",
+      department: "Security & QA",
       location: "Remote",
-      salary: "$90,000 - $120,000 / yr",
+      salary: "Competitive / Project-based",
       requirements: [
-        "3+ Years engineering Node.js microservices (Express/NestJS)",
-        "Experience mapping schema structures in MongoDB & PostgreSQL",
-        "Familiarity with Docker container orchestration & AWS ECS pipelines",
-        "Understanding of token authorization protocols (JWT, Google Login)"
+        "Experience conducting vulnerability assessments and network testing",
+        "Hands-on familiarity with Linux environments and OWASP Top 10 guidelines",
+        "Ability to audit API endpoints for security loopholes and validation errors",
+        "Strong attention to detail and rigorous testing mindset"
       ]
     }
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
-      setResume(e.target.files[0]);
-      if (errors.resume) {
-        setErrors(prev => ({ ...prev, resume: '' }));
-      }
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    if (!formData.name.trim()) newErrors.name = 'Full name is required';
-    if (!formData.email.trim()) {
-      newErrors.email = 'Email address is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Invalid email address';
-    }
-    if (!resume) newErrors.resume = 'Please upload your resume';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmitApply = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateForm() || !selectedJob) return;
-
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      // Post to LocalStorage DB
-      db.addApplication({
-        name: formData.name,
-        email: formData.email,
-        position: selectedJob.titles.en,
-        message: formData.message,
-        resumeName: resume ? resume.name : 'UnknownResume.pdf'
-      });
-
-      setIsSubmitting(false);
-      setIsSuccess(true);
-    }, 1200);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedJob(null);
+  const handleOpenModal = (job: JobPosition) => {
+    setSelectedJob(job);
     setFormData({ name: '', email: '', message: '' });
     setResume(null);
     setErrors({});
     setIsSuccess(false);
   };
 
+  const handleCloseModal = () => {
+    setSelectedJob(null);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setResume(e.target.files[0]);
+      if (errors.resume) {
+        setErrors((prev) => ({ ...prev, resume: '' }));
+      }
+    }
+  };
+
+  const validate = () => {
+    const errs: Record<string, string> = {};
+    if (!formData.name.trim()) errs.name = 'Name is required';
+    if (!formData.email.trim()) {
+      errs.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errs.email = 'Email is invalid';
+    }
+    if (!resume) errs.resume = 'Resume is required';
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate() || !selectedJob) return;
+
+    setIsSubmitting(true);
+
+    setTimeout(() => {
+      db.addApplication({
+        name: formData.name,
+        email: formData.email,
+        position: selectedJob.titles.en,
+        message: formData.message,
+        resumeName: resume ? resume.name : 'resume.pdf'
+      });
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      setTimeout(() => {
+        handleCloseModal();
+      }, 2500);
+    }, 1200);
+  };
+
   return (
-    <section id="careers" className="w-full py-20 font-sans">
+    <section id="careers" className="w-full py-20 bg-slate-50/50 dark:bg-brand-dark/20 border-t border-b border-slate-200/40 dark:border-slate-850/40 font-sans">
       <div className="max-w-7xl mx-auto px-6 space-y-12">
         
         {/* Section Header */}
         <div className="text-center space-y-3">
-          <span className="px-3.5 py-1.5 text-[10px] font-extrabold rounded-full bg-brand-accent-purple/10 text-brand-accent-purple border border-brand-accent-purple/20 uppercase tracking-widest">
-            {t('nav.careers')}
+          <span className="px-3.5 py-1.5 text-[10px] font-extrabold rounded-full bg-brand-accent-blue/10 text-brand-accent-blue border border-brand-accent-blue/20 uppercase tracking-widest">
+            {t('careers.badge')}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t('careers.title')}
           </h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-brand-accent-purple to-brand-accent-cyan mx-auto rounded-full mt-2" />
+          <div className="w-12 h-1 bg-gradient-to-r from-brand-accent-blue to-brand-accent-purple mx-auto rounded-full mt-2" />
         </div>
 
-        {/* Job Listings Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 items-stretch">
+        {/* Job Openings Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
           {jobs.map((job) => (
             <div 
               key={job.id}
-              className="glass-card border border-slate-200/50 dark:border-slate-800/60 p-6 rounded-3xl flex flex-col justify-between shadow-md hover:shadow-lg transition-all duration-300"
+              className="glass-card glass-card-hover p-6 rounded-3xl flex flex-col justify-between border border-white/20 dark:border-slate-800/80 shadow-md relative overflow-hidden"
             >
               <div className="space-y-4">
-                {/* Header */}
-                <div className="space-y-1">
-                  <span className="px-2.5 py-0.5 text-[8px] font-black uppercase tracking-wider rounded-md bg-brand-accent-purple/10 text-brand-accent-purple border border-brand-accent-purple/20">
+                <div className="flex justify-between items-start gap-2">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-brand-accent-blue/10 text-brand-accent-blue border border-brand-accent-blue/20">
                     {job.department}
                   </span>
-                  <h4 className="text-base font-extrabold text-slate-900 dark:text-white pt-1">
-                    {job.titles[language]}
-                  </h4>
+                  <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400">
+                    {job.location}
+                  </span>
                 </div>
 
-                {/* Details list */}
-                <div className="space-y-1.5 text-[10px] text-slate-500 dark:text-slate-400 font-medium">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin className="w-3.5 h-3.5 text-brand-accent-blue" />
-                    <span>{job.location}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <DollarSign className="w-3.5 h-3.5 text-brand-accent-purple" />
-                    <span>{job.salary}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-brand-accent-cyan" />
-                    <span>Full-time / Permanent</span>
-                  </div>
-                </div>
+                <h3 className="text-base font-extrabold text-slate-900 dark:text-white leading-snug">
+                  {job.titles[language as 'en' | 'es' | 'de'] || job.titles.en}
+                </h3>
 
-                {/* Requirements checkmarks */}
-                <div className="space-y-2 pt-2 border-t border-slate-200/50 dark:border-slate-800/50">
-                  <span className="text-[9px] font-black uppercase tracking-wider text-slate-450 block">Requirements</span>
-                  <ul className="space-y-1.5">
-                    {job.requirements.map((req, index) => (
-                      <li key={index} className="text-[10px] text-slate-400 dark:text-slate-350 leading-relaxed font-light flex items-start gap-1">
-                        <span className="w-1.5 h-1.5 bg-brand-accent-purple rounded-full shrink-0 mt-1.5" />
+                <div className="space-y-2 pt-2 border-t border-slate-200/40 dark:border-slate-800/40">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                    Key Highlights:
+                  </span>
+                  <ul className="space-y-1 text-xs text-slate-500 dark:text-slate-400 font-light">
+                    {job.requirements.slice(0, 2).map((req, i) => (
+                      <li key={i} className="flex items-start gap-1.5">
+                        <span className="text-brand-accent-blue font-bold">•</span>
                         <span>{req}</span>
                       </li>
                     ))}
@@ -202,175 +188,134 @@ export const Careers: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action */}
               <div className="pt-6">
                 <button
-                  onClick={() => setSelectedJob(job)}
-                  className="w-full btn-secondary py-2.5 rounded-xl text-xs font-bold text-slate-900 dark:text-white border-brand-accent-purple/25 hover:border-brand-accent-purple/60"
+                  onClick={() => handleOpenModal(job)}
+                  className="w-full py-2.5 rounded-2xl bg-white/40 dark:bg-slate-900/40 border border-slate-200/50 dark:border-slate-800/50 hover:bg-gradient-to-r hover:from-brand-accent-blue hover:to-brand-accent-purple hover:text-white text-slate-800 dark:text-slate-200 text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2"
                 >
-                  {t('careers.applyNow')}
+                  <span>Apply / Collaborate</span>
                 </button>
               </div>
-
             </div>
           ))}
         </div>
 
       </div>
 
-      {/* Apply Modal */}
+      {/* Modal application form */}
       {selectedJob && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm cursor-pointer"
-            onClick={handleCloseModal}
-          />
-          {/* Modal */}
-          <div className="relative w-full max-w-lg rounded-3xl glass-card border border-white/20 p-6 shadow-2xl z-10 overflow-hidden animate-float-quick">
-            {/* Header */}
-            <div className="flex items-center justify-between border-b border-slate-200/50 dark:border-slate-800/50 pb-4 mb-4">
-              <div>
-                <h4 className="font-extrabold text-slate-900 dark:text-white text-base">
-                  {t('careers.applyModal.title')}
-                </h4>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">
-                  Position: **{selectedJob.titles[language]}**
-                </p>
-              </div>
-              <button 
-                onClick={handleCloseModal}
-                className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-sm animate-fade-in">
+          <div className="glass-card w-full max-w-lg rounded-3xl p-6 sm:p-8 border border-white/20 dark:border-slate-800 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button 
+              onClick={handleCloseModal}
+              className="absolute top-5 right-5 p-2 rounded-full hover:bg-slate-200/50 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
 
             {isSuccess ? (
-              <div className="flex flex-col items-center justify-center py-6 text-center space-y-4 animate-fade-in">
-                <div className="w-14 h-14 bg-emerald-100 dark:bg-emerald-950/40 rounded-full flex items-center justify-center text-emerald-500 border border-emerald-200 dark:border-emerald-900/60 animate-bounce">
+              <div className="py-12 text-center space-y-4">
+                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 mx-auto flex items-center justify-center animate-bounce">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
-                <h5 className="font-bold text-slate-950 dark:text-white text-sm">
-                  Application Uploaded!
-                </h5>
-                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed">
-                  {t('careers.applyModal.success')}
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">Application Received!</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+                  Thank you for applying to collaborate on {selectedJob.titles.en}. We will review your profile and reach out via email.
                 </p>
-                <button 
-                  onClick={handleCloseModal}
-                  className="btn-primary px-8 mt-2"
-                >
-                  Close Job Portal
-                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmitApply} className="space-y-4">
-                {/* Name */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-                    {t('contact.form.name')}
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Marcus Vance"
-                    className={`w-full bg-white/50 dark:bg-slate-950/40 border rounded-xl py-2.5 px-3.5 text-xs outline-none focus:ring-2 focus:ring-brand-accent-blue transition-all ${
-                      errors.name ? 'border-red-500' : 'border-slate-200 dark:border-slate-850'
-                    }`}
-                  />
-                  {errors.name && <p className="text-[10px] text-red-500 mt-1">{errors.name}</p>}
+              <div className="space-y-6">
+                <div className="space-y-1">
+                  <span className="text-[10px] font-bold text-brand-accent-blue uppercase tracking-wider">
+                    {selectedJob.department}
+                  </span>
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                    Apply: {selectedJob.titles[language as 'en' | 'es' | 'de'] || selectedJob.titles.en}
+                  </h3>
                 </div>
 
-                {/* Email */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-                    {t('contact.form.email')}
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="marcus@company.com"
-                    className={`w-full bg-white/50 dark:bg-slate-950/40 border rounded-xl py-2.5 px-3.5 text-xs outline-none focus:ring-2 focus:ring-brand-accent-blue transition-all ${
-                      errors.email ? 'border-red-500' : 'border-slate-200 dark:border-slate-850'
-                    }`}
-                  />
-                  {errors.email && <p className="text-[10px] text-red-500 mt-1">{errors.email}</p>}
-                </div>
-
-                {/* Cover letter Message */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">
-                    Message / Cover Letter (Optional)
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={3}
-                    placeholder="Tell us why you are a great fit..."
-                    className="w-full bg-white/50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl py-2.5 px-3.5 text-xs outline-none focus:ring-2 focus:ring-brand-accent-blue transition-all"
-                  />
-                </div>
-
-                {/* Resume Upload Drop Zone Mockup */}
-                <div>
-                  <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5">
-                    {t('careers.applyModal.resume')}
-                  </label>
-                  <div className={`relative border border-dashed rounded-2xl p-6 text-center transition-all ${
-                    errors.resume ? 'border-red-500 bg-red-50/10' : 'border-slate-300 dark:border-slate-800 hover:border-brand-accent-blue hover:bg-slate-100/10'
-                  }`}>
-                    <input
-                      type="file"
-                      accept=".pdf,.docx"
-                      onChange={handleFileChange}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Full Name *
+                    </label>
+                    <input 
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Your full name..."
+                      className="w-full bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800/80 rounded-2xl py-2.5 px-4 text-xs text-slate-800 dark:text-slate-200 outline-none focus:ring-2 focus:ring-brand-accent-blue"
                     />
-                    <Upload className="w-8 h-8 text-slate-400 mx-auto mb-2 pointer-events-none" />
-                    {resume ? (
-                      <div className="space-y-1">
-                        <span className="text-xs font-bold text-slate-900 dark:text-white block">
-                          {resume.name}
-                        </span>
-                        <span className="text-[9px] text-slate-400 block">
-                          {(resume.size / 1024 / 1024).toFixed(2)} MB • PDF Document
-                        </span>
-                      </div>
-                    ) : (
-                      <div className="space-y-1">
-                        <span className="text-xs font-medium text-slate-700 dark:text-slate-350 block">
-                          {t('careers.applyModal.resumeHint')}
-                        </span>
-                        <span className="text-[9px] text-slate-400 block">PDF or DOCX max 5MB</span>
-                      </div>
-                    )}
+                    {errors.name && <p className="text-[10px] text-red-500 mt-1">{errors.name}</p>}
                   </div>
-                  {errors.resume && <p className="text-[10px] text-red-500 mt-1">{errors.resume}</p>}
-                </div>
 
-                {/* Actions */}
-                <div className="flex gap-2 pt-2 border-t border-slate-200/50 dark:border-slate-800/50">
-                  <button
-                    type="button"
-                    onClick={handleCloseModal}
-                    className="w-1/3 btn-secondary py-3 text-xs font-bold"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-2/3 btn-primary py-3 flex items-center justify-center font-bold"
-                  >
-                    {isSubmitting ? 'Uploading...' : t('careers.applyModal.submit')}
-                  </button>
-                </div>
-              </form>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Email Address *
+                    </label>
+                    <input 
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="your.email@example.com"
+                      className="w-full bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800/80 rounded-2xl py-2.5 px-4 text-xs text-slate-800 dark:text-slate-200 outline-none focus:ring-2 focus:ring-brand-accent-blue"
+                    />
+                    {errors.email && <p className="text-[10px] text-red-500 mt-1">{errors.email}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Resume / Portfolio Link / File *
+                    </label>
+                    <div className="border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl p-4 text-center hover:border-brand-accent-blue transition-colors relative cursor-pointer">
+                      <input 
+                        type="file" 
+                        onChange={handleFileChange}
+                        className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
+                        accept=".pdf,.doc,.docx"
+                      />
+                      <div className="flex flex-col items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+                        <Upload className="w-5 h-5 text-brand-accent-blue" />
+                        <span className="font-semibold text-slate-800 dark:text-slate-200">
+                          {resume ? resume.name : "Click to upload CV / Resume (PDF/DOCX)"}
+                        </span>
+                        <span className="text-[10px] text-slate-400">Maximum file size 10MB</span>
+                      </div>
+                    </div>
+                    {errors.resume && <p className="text-[10px] text-red-500 mt-1">{errors.resume}</p>}
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">
+                      Cover Note / Relevant Projects
+                    </label>
+                    <textarea 
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      placeholder="Briefly describe your experience and relevant GitHub repos or portfolio links..."
+                      className="w-full bg-white/50 dark:bg-slate-900/50 border border-slate-200/60 dark:border-slate-800/80 rounded-2xl py-2.5 px-4 text-xs text-slate-800 dark:text-slate-200 outline-none focus:ring-2 focus:ring-brand-accent-blue"
+                    />
+                  </div>
+
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3 rounded-2xl bg-gradient-to-r from-brand-accent-blue to-brand-accent-purple text-white text-xs font-bold shadow-lg hover:opacity-95 transition-opacity flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                          <span>Submitting Application...</span>
+                        </>
+                      ) : (
+                        <span>Submit Application</span>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              </div>
             )}
           </div>
         </div>

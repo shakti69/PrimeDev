@@ -32,40 +32,40 @@ export const blogData: BlogArticle[] = [
     category: 'coding',
     isFeatured: true,
     titles: {
-      en: "Why Next.js is Dominating Corporate Web Engineering in 2026",
-      es: "Por qué Next.js domina la ingeniería web corporativa en 2026",
-      de: "Warum Next.js die Webentwicklung für Unternehmen im Jahr 2026 dominiert"
+      en: "Architecting Role-Based Web Apps with React, Express, and JWT Authentication",
+      es: "Arquitectura de Aplicaciones Web con Roles usando React, Express y Autenticación JWT",
+      de: "Architektur rollenbasierter Web-Apps mit React, Express und JWT-Authentifizierung"
     },
     excerpts: {
-      en: "Explore how Server Actions, partial pre-rendering, and nested layouts enable corporate teams to build blazing-fast apps with simple configurations.",
-      es: "Descubre cómo Server Actions, el prerrenderizado parcial y los diseños anidados permiten crear aplicaciones corporativas veloces y estables.",
-      de: "Erfahren Sie, wie Server-Actions, Partial Pre-rendering und verschachtelte Layouts es Unternehmen ermöglichen, ultraschnelle Apps zu bauen."
+      en: "A deep dive into building secure multi-tier user systems (Students, Staff, Admins), handling OTP verification, and automating business logic such as daily cutoff timers and PDF reports.",
+      es: "Un análisis profundo sobre cómo construir sistemas de usuarios de múltiples niveles, gestionar verificación OTP y automatizar la lógica empresarial y reportes en PDF.",
+      de: "Ein tiefer Einblick in den Aufbau sicherer mehrstufiger Benutzersysteme, OTP-Verifizierung und die Automatisierung von Geschäftslogiken und PDF-Berichten."
     },
     readTimes: {
-      en: "6 min read",
-      es: "6 min de lectura",
-      de: "6 Min. Lesezeit"
+      en: "5 min read",
+      es: "5 min de lectura",
+      de: "5 Min. Lesezeit"
     },
     author: {
-      name: "Marcus Vance",
-      role: "Lead Fullstack Dev",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80"
+      name: "Shakti Prasad Hota",
+      role: "Lead Full-Stack Developer",
+      image: "/images/profile.png"
     },
-    date: "June 20, 2026",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80"
+    date: "August 2026",
+    image: "/favicon.svg"
   },
   {
     id: 'b2',
     category: 'design',
     titles: {
-      en: "Designing for the Future: Glassmorphism and Spatial Interfaces",
-      es: "Diseñando para el futuro: Glassmorphism e interfaces espaciales",
-      de: "Design für die Zukunft: Glassmorphismus und räumliche Interfaces"
+      en: "Accessible Web Engineering: Building Audio & Voice Tutors for Blind Students",
+      es: "Ingeniería Web Accesible: Creando Tutores de Audio y Voz para Estudiantes Invidentes",
+      de: "Barrierefreie Webentwicklung: Audio- und Sprach-Tutoren für sehbehinderte Lernende"
     },
     excerpts: {
-      en: "Learn the core design theories behind light refraction, visual hierarchies, and CSS backdrop-filters that keep users engaged and wowed.",
-      es: "Aprende las teorías de diseño detrás de la refracción de luz, jerarquías visuales y backdrop-filters de CSS que cautivan a los usuarios.",
-      de: "Lernen Sie die Designtheorien hinter Lichtbrechung, visueller Hierarchie und CSS-Backdrop-Filtern kennen, die Nutzer begeistern."
+      en: "Best practices for implementing Web Speech API, PDF text extraction, high-contrast layouts, and keyboard-first accessibility without sacrificing modern aesthetic standards.",
+      es: "Mejores prácticas para implementar Web Speech API, extracción de texto de PDFs, diseños de alto contraste y accesibilidad por teclado.",
+      de: "Best Practices für die Implementierung der Web Speech API, PDF-Textextraktion, kontrastreiche Layouts und Tastatur-Zugänglichkeit."
     },
     readTimes: {
       en: "4 min read",
@@ -73,37 +73,37 @@ export const blogData: BlogArticle[] = [
       de: "4 Min. Lesezeit"
     },
     author: {
-      name: "Suki Chen",
-      role: "Lead UI/UX Designer",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+      name: "Shakti Prasad Hota",
+      role: "Lead Full-Stack Developer",
+      image: "/images/profile.png"
     },
-    date: "June 15, 2026",
-    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80"
+    date: "July 2026",
+    image: "/favicon.svg"
   },
   {
     id: 'b3',
     category: 'cloud',
     titles: {
-      en: "Scaling SaaS Architectures: Docker Containers vs AWS Serverless",
-      es: "Escalando arquitecturas SaaS: Contenedores Docker vs AWS Serverless",
-      de: "Skalierung von SaaS-Architekturen: Docker vs. AWS Serverless"
+      en: "Cybersecurity Fundamentals: Hardening Web Applications and Network Defense",
+      es: "Fundamentos de Ciberseguridad: Protección de Aplicaciones Web y Defensa de Redes",
+      de: "Grundlagen der Cybersicherheit: Absicherung von Webanwendungen und Netzwerkschutz"
     },
     excerpts: {
-      en: "A comprehensive breakdown of billing, server cold-starts, state management, and edge routing budgets for startups building dynamic platforms.",
-      es: "Un análisis comparativo sobre facturación, arranques en frío, gestión de estado y enrutamiento perimetral para nuevas empresas.",
-      de: "Ein umfassender Vergleich von Abrechnungsmodellen, Kaltstarts, Zustandsverwaltung und Edge-Routing für Startups."
+      en: "Practical techniques for vulnerability assessment, penetration testing with Kali Linux, securing API endpoints against XSS and injection, and safe state management.",
+      es: "Técnicas prácticas para evaluación de vulnerabilidades, pruebas de penetración con Kali Linux y protección de endpoints de API.",
+      de: "Praktische Techniken für Schwachstellenanalysen, Penetrationstests mit Kali Linux und die Absicherung von API-Endpunkten gegen Sicherheitsrisiken."
     },
     readTimes: {
-      en: "8 min read",
-      es: "8 min de lectura",
-      de: "8 Min. Lesezeit"
+      en: "6 min read",
+      es: "6 min de lectura",
+      de: "6 Min. Lesezeit"
     },
     author: {
-      name: "David Miller",
-      role: "Senior Backend Developer",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80"
+      name: "Shakti Prasad Hota",
+      role: "Cybersecurity Specialist",
+      image: "/images/profile.png"
     },
-    date: "June 08, 2026",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80"
+    date: "June 2026",
+    image: "/favicon.svg"
   }
 ];

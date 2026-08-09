@@ -1,47 +1,46 @@
 import { type ClientProject } from '../utils/db';
 
 export const clientProjectsData: Record<string, ClientProject> = {
-  // Client 1: Elena & Team Aether V2 (client@primedev.com / password123)
+  // Client Account: client@primedev.com / password123
   'client@primedev.com': {
-    id: 'pd-proj-783',
-    name: 'Aether SaaS Platform V2',
+    id: 'pd-proj-01',
+    name: 'Hostel Meal Management System (Full-Stack Deployment)',
     status: 'In Development',
-    overallProgress: 68,
+    overallProgress: 85,
     startDate: '2026-05-10',
-    targetLaunch: '2026-08-15',
+    targetLaunch: '2026-08-30',
     milestones: [
-      { id: '1', title: 'Discovery & Requirements Gathering', status: 'completed', percentage: 100, date: 'May 15, 2026', description: 'Aligning business goals, system architectures, and technical specifications.' },
-      { id: '2', title: 'UI/UX Design & High-Fi Prototyping', status: 'completed', percentage: 100, date: 'June 05, 2026', description: 'Creating interactive design systems, dashboard interfaces, and mobile screens.' },
-      { id: '3', title: 'Frontend Core Engine Architecture', status: 'completed', percentage: 100, date: 'June 20, 2026', description: 'Setting up clean repository architecture, design library components, and responsive views.' },
-      { id: '4', title: 'Backend API & MongoDB Database Integration', status: 'in-progress', percentage: 70, date: 'July 15, 2026', description: 'Developing Express API microservices, JWT authentication, and data structures.' },
-      { id: '5', title: 'Cloud Deployments & Server-side Actions', status: 'pending', percentage: 0, date: 'August 01, 2026', description: 'Deploying servers on AWS/Vercel and scaling static assets on CDNs.' },
-      { id: '6', title: 'End-to-End QA & Production Launch', status: 'pending', percentage: 0, date: 'August 15, 2026', description: 'Automated testing, cross-browser audits, accessibility validations, and dns mapping.' }
+      { id: '1', title: 'System Architecture & Database Modeling', status: 'completed', percentage: 100, date: 'May 15, 2026', description: 'Designing role-based MongoDB models (Student, Staff, Admin, Developer) and authentication specs.' },
+      { id: '2', title: 'Frontend UI & Responsive Dashboard', status: 'completed', percentage: 100, date: 'June 05, 2026', description: 'Building React + Tailwind dashboards, meal toggle switches, and monthly summary tables.' },
+      { id: '3', title: 'Backend REST API & JWT OTP Verification', status: 'completed', percentage: 100, date: 'June 25, 2026', description: 'Developing Express endpoints, cutoff time policies, bcrypt hashing, and OTP email validation.' },
+      { id: '4', title: 'Automated Billing Calculation & jsPDF Integration', status: 'completed', percentage: 100, date: 'July 20, 2026', description: 'Implementing monthly bill generation, per-meal cost pricing, and instant PDF download exports.' },
+      { id: '5', title: 'Role-Based Access Control & Staff/Admin Panels', status: 'in-progress', percentage: 75, date: 'August 15, 2026', description: 'Connecting staff daily counters, student lists, CSV export capabilities, and super admin controls.' },
+      { id: '6', title: 'Production Cloud Deployment & Handover', status: 'pending', percentage: 0, date: 'August 30, 2026', description: 'Deploying Node.js backend to production, frontend to static CDN, and final verification.' }
     ],
     invoices: [
-      { id: 'INV-2026-001', description: 'Project Kickoff (30% Deposit)', amount: '$4,500.00', dueDate: '2026-05-12', status: 'paid' },
-      { id: 'INV-2026-002', description: 'UI/UX Approval (30% Milestone)', amount: '$4,500.00', dueDate: '2026-06-08', status: 'paid' },
-      { id: 'INV-2026-003', description: 'Development Phase 1 (20% Milestone)', amount: '$3,000.00', dueDate: '2026-07-20', status: 'pending' },
-      { id: 'INV-2026-004', description: 'Final Delivery & Handover (20%)', amount: '$3,000.00', dueDate: '2026-08-15', status: 'pending' }
+      { id: 'INV-2026-001', description: 'Project Kickoff & Architecture (40% Deposit)', amount: '$1,200.00', dueDate: '2026-05-12', status: 'paid' },
+      { id: 'INV-2026-002', description: 'Core API & UI Milestone (30%)', amount: '$900.00', dueDate: '2026-06-28', status: 'paid' },
+      { id: 'INV-2026-003', description: 'Billing Engine & Final Deployment (30%)', amount: '$900.00', dueDate: '2026-08-30', status: 'pending' }
     ]
   },
   
-  // Client 2: Liam Neeson & Veloce Storefront (liam@veloce.com / password123)
-  'liam@veloce.com': {
-    id: 'pd-proj-104',
-    name: 'Veloce Headless Storefront',
-    status: 'Design Phase',
-    overallProgress: 35,
+  // Client 2: Smart Campus IoT / Attendance
+  'campus@primedev.com': {
+    id: 'pd-proj-02',
+    name: 'Smart WiFi Attendance System',
+    status: 'Testing Phase',
+    overallProgress: 90,
     startDate: '2026-06-01',
-    targetLaunch: '2026-09-01',
+    targetLaunch: '2026-09-05',
     milestones: [
-      { id: '1', title: 'Market Strategy & Audit', status: 'completed', percentage: 100, date: 'June 10, 2026', description: 'Competitor indexing and speed budget benchmarking.' },
-      { id: '2', title: 'Figma E-Commerce Wireframes', status: 'in-progress', percentage: 60, date: 'July 05, 2026', description: 'Designing high-converting checkout flows and cart side-drawers.' },
-      { id: '3', title: 'Shopify Admin Sync & API Configs', status: 'pending', percentage: 0, date: 'July 25, 2026', description: 'Linking product inventory variants via Shopify GraphQL.' },
-      { id: '4', title: 'Vercel Deployment & Handover', status: 'pending', percentage: 0, date: 'September 01, 2026', description: 'Mapping custom domains and optimizing Core Web Vitals.' }
+      { id: '1', title: 'Network Protocol & Hardware Testing', status: 'completed', percentage: 100, date: 'June 10, 2026', description: 'WiFi signal presence detection and access point probe request capture.' },
+      { id: '2', title: 'Automated Attendance Processing Engine', status: 'completed', percentage: 100, date: 'July 10, 2026', description: 'Algorithms to record student presence without manual intervention.' },
+      { id: '3', title: 'Admin Reporting & Analytics Dashboard', status: 'in-progress', percentage: 80, date: 'August 20, 2026', description: 'Class-wise attendance reports, anomaly alerts, and export options.' },
+      { id: '4', title: 'Campus Network Rollout', status: 'pending', percentage: 0, date: 'September 05, 2026', description: 'Final onsite calibration and administrator training.' }
     ],
     invoices: [
-      { id: 'INV-2026-088', description: 'Deposit Payment (50%)', amount: '$6,000.00', dueDate: '2026-06-02', status: 'paid' },
-      { id: 'INV-2026-089', description: 'Milestone 2 Delivery (50%)', amount: '$6,000.00', dueDate: '2026-08-01', status: 'pending' }
+      { id: 'INV-2026-051', description: 'Hardware & System Setup (50%)', amount: '$1,500.00', dueDate: '2026-06-05', status: 'paid' },
+      { id: 'INV-2026-052', description: 'Final Integration & Delivery (50%)', amount: '$1,500.00', dueDate: '2026-09-05', status: 'pending' }
     ]
   }
 };

@@ -163,7 +163,7 @@ export const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    placeholder="Elena Rostova"
+                    placeholder="Your Full Name..."
                     className={`w-full bg-white/50 dark:bg-slate-950/40 border rounded-xl py-3 px-4 text-xs outline-none focus:ring-2 focus:ring-brand-accent-blue transition-all ${
                       errors.name ? 'border-red-500' : 'border-slate-200 dark:border-slate-800'
                     }`}
@@ -186,7 +186,7 @@ export const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    placeholder="elena@primedev.com"
+                    placeholder="your.email@example.com"
                     className={`w-full bg-white/50 dark:bg-slate-950/40 border rounded-xl py-3 px-4 text-xs outline-none focus:ring-2 focus:ring-brand-accent-blue transition-all ${
                       errors.email ? 'border-red-500' : 'border-slate-200 dark:border-slate-800'
                     }`}
@@ -209,7 +209,7 @@ export const Contact: React.FC = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+1 (555) 012-3456"
+                    placeholder="+91 98765 43210"
                     className={`w-full bg-white/50 dark:bg-slate-950/40 border rounded-xl py-3 px-4 text-xs outline-none focus:ring-2 focus:ring-brand-accent-purple transition-all ${
                       errors.phone ? 'border-red-500' : 'border-slate-200 dark:border-slate-800'
                     }`}
@@ -232,7 +232,7 @@ export const Contact: React.FC = () => {
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    placeholder="PrimeDev Inc."
+                    placeholder="Company or Organization (Optional)"
                     className="w-full bg-white/50 dark:bg-slate-950/40 border border-slate-200 dark:border-slate-800 rounded-xl py-3 px-4 text-xs outline-none focus:ring-2 focus:ring-brand-accent-purple transition-all"
                   />
                 </div>
