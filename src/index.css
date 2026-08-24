@@ -245,6 +245,15 @@
   50% { transform: scale(0.92); opacity: 0.8; }
 }
 
+@keyframes iconHandshake {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  15% { transform: rotate(-12deg) scale(1.06); }
+  30% { transform: rotate(10deg) scale(1.06); }
+  45% { transform: rotate(-8deg) scale(1.04); }
+  60% { transform: rotate(6deg) scale(1.02); }
+  75% { transform: rotate(0deg) scale(1); }
+}
+
 .animate-icon-float {
   animation: iconFloat 3s ease-in-out infinite;
 }
@@ -275,6 +284,11 @@
 
 .animate-icon-camera {
   animation: iconCameraRecord 2s ease-in-out infinite;
+}
+
+.animate-icon-handshake {
+  animation: iconHandshake 2.8s ease-in-out infinite;
+  transform-origin: center;
 }
 
 @keyframes auraDrift {

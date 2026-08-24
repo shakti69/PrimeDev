@@ -1,206 +1,161 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+export interface ProjectItem {
+  id: string;
+  client: string;
+  title: string;
+  tag: string;
+  headline: string;
+  subtitle?: string;
+  imageUrl?: string;
+  link?: string;
+  badges?: {
+    topLeft?: string;
+    topRight?: string;
+    bottomLeft?: string;
+    bottomRight?: string;
+  };
+  gradientClass: string;
+  accentColor?: string;
+}
+
 export const SelectedWorkBrix: React.FC = () => {
-  const projects = [
+  const projects: ProjectItem[] = [
     {
-      id: 'aquon',
-      client: 'AQUON',
-      title: 'Hydration brand build by Yuzvendra chahal and bhant sharma',
-      tag: 'Brand & Packaging',
-      bgClass: 'bg-[#111111] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-zinc-900 to-black p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between items-center text-xs font-mono text-amber-400">
-            <span>AQUON HYDRO</span>
-            <span>CHAMPIONS EDITION</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-2xl sm:text-4xl font-extrabold tracking-tight uppercase text-white">
-              Built by champions.
-            </span>
-            <span className="block text-xs text-zinc-400 mt-1 font-mono">Premium Electrolyte Formulation</span>
-          </div>
-          <div className="flex justify-between items-center text-[11px] text-zinc-400 font-mono">
-            <span>YUZVENDRA CHAHAL</span>
-            <span className="text-amber-400">LIMITED BATCH</span>
-          </div>
-        </div>
-      ),
+      id: 'strikz-esports',
+      client: 'Strikz Esports',
+      title: 'A professional esports platform featuring tournament registration, gaming content, team branding, player information, and management features.',
+      tag: 'Esports / Gaming / Web Development',
+      headline: 'STRIKZ ESPORTS',
+      subtitle: 'Odisha Pride of India',
+      imageUrl: '/images/strikz_banner.png',
+      gradientClass: 'from-red-950 via-zinc-950 to-black',
+      accentColor: 'text-amber-400',
+      badges: {
+        topLeft: 'PRO ESPORTS ARENA',
+        topRight: 'ODISHA PRIDE',
+        bottomLeft: 'TEAM ROSTERS & STATS',
+        bottomRight: 'LIVE MATCH FEED',
+      },
     },
     {
-      id: 'off-road',
-      client: 'OFF ROAD',
-      title: 'Luxury watch brand in India',
-      tag: 'UI/UX & Branding',
-      bgClass: 'bg-[#991B1B] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-red-700 to-red-950 p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-red-200">
-            <span>SWISS CHRONO</span>
-            <span>OFF ROAD</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-2xl sm:text-4xl font-black italic tracking-tighter uppercase text-white drop-shadow">
-              TIME FOR THE JOURNEY
-            </span>
-          </div>
-          <div className="flex justify-between text-[11px] text-red-200 font-mono">
-            <span>AUTOMATIC MOVEMENT</span>
-            <span>300M WATERPROOF</span>
-          </div>
-        </div>
-      ),
+      id: 'primenet',
+      client: 'PrimeNet',
+      title: 'A modern networking and connectivity project focused on internet infrastructure, network services, performance, and reliable digital connectivity.',
+      tag: 'Networking / Internet / Infrastructure',
+      headline: 'PRIMENET',
+      subtitle: 'Campus Fiber Broadband, Without The Waiting',
+      imageUrl: '/images/primenet_banner.png',
+      gradientClass: 'from-[#051329] via-[#0A192F] to-black',
+      accentColor: 'text-sky-400',
+      badges: {
+        topLeft: 'CAMPUS FIBER BROADBAND',
+        topRight: 'GIGABIT INTERNET',
+        bottomLeft: 'MAC AUTO-CONNECTION',
+        bottomRight: 'ZERO CAPTIVE PORTAL',
+      },
     },
     {
-      id: 'swiss-time-house',
-      client: 'SWISS TIME HOUSE',
-      title: "Kerala's oldest and largest authorized watch retailer, founded in 1946.",
-      tag: 'E-commerce Platform',
-      bgClass: 'bg-[#18181B] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-zinc-800 to-zinc-950 p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-zinc-400">
-            <span>SINCE 1946</span>
-            <span>AUTHORIZED DEALER</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-2xl sm:text-3xl font-serif text-white tracking-wide">
-              SWISS TIME HOUSE
-            </span>
-            <span className="block text-xs text-zinc-400 mt-1 font-mono">Luxury Horology Retail Experience</span>
-          </div>
-          <div className="flex justify-between text-[11px] text-zinc-400 font-mono">
-            <span>OMEGA • RADO • TISSOT</span>
-            <span className="text-emerald-400">100% AUTHENTIC</span>
-          </div>
-        </div>
-      ),
+      id: 'pointx',
+      client: 'PointX',
+      title: 'An online esports management platform built to manage tournaments from start to finish with points tables, live standings, and OBS overlay integration.',
+      tag: 'Esports / Tournament OS / Web App',
+      headline: 'POINTX',
+      subtitle: 'Powering the Complete Esports Experience',
+      imageUrl: '/images/pointx_banner.png',
+      gradientClass: 'from-[#0d1117] via-[#161b22] to-black',
+      accentColor: 'text-amber-400',
+      badges: {
+        topLeft: 'TOURNAMENT MANAGEMENT',
+        topRight: 'LIVE STANDINGS & OBS',
+        bottomLeft: 'LIVE FREE FIRE SCORING',
+        bottomRight: 'AUTOMATED BRACKETS',
+      },
     },
     {
-      id: 'rock-revival',
-      client: 'ROCK REVIVAL',
-      title: 'Premium denim & lifestyle brand born in Los Angeles, California.',
-      tag: 'Design System',
-      bgClass: 'bg-[#09090B] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-zinc-900 to-black p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-zinc-500">
-            <span>EST. LOS ANGELES</span>
-            <span>PREMIUM DENIM</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-3xl sm:text-4xl font-serif tracking-wider uppercase text-white">
-              ROCK REVIVAL
-            </span>
-            <span className="block text-xs text-amber-500/90 mt-1 font-mono">SIGNATURE FLEUR-DE-LIS</span>
-          </div>
-          <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
-            <span>FALL / WINTER &apos;26</span>
-            <span>GLOBAL FLAGSHIP</span>
-          </div>
-        </div>
-      ),
+      id: 'darkedge-ai',
+      client: 'DarkEdge AI',
+      title: 'An offline AI assistant Android application designed to run AI models locally on-device, providing private and intelligent assistance without internet connectivity.',
+      tag: 'Android App / Offline AI / Productivity',
+      headline: 'DARKEDGE AI',
+      subtitle: 'Private Intelligence. Powered Locally.',
+      imageUrl: '/images/darkedge_banner.png',
+      gradientClass: 'from-[#080d13] via-[#0f172a] to-black',
+      accentColor: 'text-emerald-400',
+      badges: {
+        topLeft: 'ANDROID APPLICATION',
+        topRight: '100% PRIVATE & OFFLINE',
+        bottomLeft: 'ON-DEVICE LLM ENGINE',
+        bottomRight: 'ZERO CLOUD LATENCY',
+      },
     },
     {
-      id: 'primedev-studio',
-      client: 'PRIMEDEV STUDIO',
-      title: 'Building digital products that combine strategy with craft.',
-      tag: 'Studio Identity',
-      bgClass: 'bg-[#FF5819] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-[#FF5819] via-[#FF4500] to-[#CC3700] p-6 flex flex-col justify-between border border-white/20 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-white/80">
-            <span>STUDIO BRAND</span>
-            <span>DIGITAL CRAFT</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-4xl sm:text-6xl font-black tracking-tighter uppercase text-white">
-              PRIMEDEV
-            </span>
-            <span className="block text-xs text-white/80 mt-1 font-mono">BRICK BY BRICK</span>
-          </div>
-          <div className="flex justify-between text-[11px] text-white/80 font-mono">
-            <span>STRATEGY + CRAFT</span>
-            <span>GLOBAL DELIVERY</span>
-          </div>
-        </div>
-      ),
+      id: 'primedev',
+      client: 'PrimeDev',
+      title: 'A professional technology and web development brand focused on creating modern websites, applications, digital experiences, and custom software solutions.',
+      tag: 'Web Development / Digital Solutions',
+      headline: 'PRIMEDEV',
+      subtitle: 'Build. Innovate. Deliver.',
+      imageUrl: '/images/primedev_banner.png',
+      gradientClass: 'from-[#FF5819] via-[#E04810] to-[#992B05]',
+      accentColor: 'text-white/90',
+      badges: {
+        topLeft: 'DIGITAL CRAFT & ENGINEERING',
+        topRight: 'FULL-STACK SUITE',
+        bottomLeft: 'BESPOKE SOFTWARE SOLUTIONS',
+        bottomRight: 'GLOBAL DELIVERY',
+      },
     },
     {
-      id: 'shivalik',
-      client: 'SHIVALIK',
-      title: 'Modern real estate development and urban infrastructure firm.',
-      tag: 'Brand & Web Architecture',
-      bgClass: 'bg-[#1C1917] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-stone-900 to-black p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-stone-400">
-            <span>ARCHITECTURE</span>
-            <span>URBAN SPACES</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-3xl sm:text-4xl font-light tracking-widest uppercase text-white">
-              SHIVALIK
-            </span>
-            <span className="block text-xs text-stone-400 mt-1 font-mono">Skyline Residences & Commercial</span>
-          </div>
-          <div className="flex justify-between text-[11px] text-stone-400 font-mono">
-            <span>SUSTAINABLE BUILDINGS</span>
-            <span className="text-amber-400">LEED CERTIFIED</span>
-          </div>
-        </div>
-      ),
+      id: 'premium-portfolio',
+      client: 'Premium Portfolio',
+      title: 'A premium personal portfolio website showcasing projects, skills, services, experience, and achievements through a modern, polished interface.',
+      tag: 'Portfolio / Web Design / UI/UX',
+      headline: 'PREMIUM PORTFOLIO',
+      subtitle: 'Developer + WebDevelopment',
+      imageUrl: '/images/portfolio_banner.png',
+      gradientClass: 'from-[#0a1113] via-[#0d1f22] to-black',
+      accentColor: 'text-teal-300',
+      badges: {
+        topLeft: 'SHAKTI PRASAD HOTA',
+        topRight: 'EDITORIAL CRAFT',
+        bottomLeft: 'INTERACTIVE UI/UX',
+        bottomRight: 'HIGH PERFORMANCE',
+      },
     },
     {
-      id: 'jawai',
-      client: 'JAWAI SAFARI',
-      title: 'Wild luxury Leopard sanctuary & eco-tourism camp in Rajasthan.',
-      tag: 'Digital Experience',
-      bgClass: 'bg-[#451A03] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-amber-950 to-stone-950 p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-amber-300">
-            <span>WILD LUXURY</span>
-            <span>RAJASTHAN</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-2xl sm:text-4xl font-serif tracking-wide text-amber-100">
-              JAWAI LEOPARD LODGE
-            </span>
-            <span className="block text-xs text-amber-300/80 mt-1 font-mono">Untamed Granite Wilderness</span>
-          </div>
-          <div className="flex justify-between text-[11px] text-amber-300 font-mono">
-            <span>EXPEDITIONS</span>
-            <span>FIVE STAR RETREAT</span>
-          </div>
-        </div>
-      ),
+      id: 'openwrt-router-os',
+      client: 'OpenWrt Router OS Design',
+      title: 'A customized router operating-system project based on OpenWrt, focused on router management, network configuration, and performance optimization.',
+      tag: 'Networking / Router OS / Linux',
+      headline: 'OPENWRT OS',
+      subtitle: 'Custom Networking, Built Your Way',
+      imageUrl: '/images/openwrt_router_banner.png',
+      gradientClass: 'from-[#04201b] via-[#0b332b] to-black',
+      accentColor: 'text-emerald-300',
+      badges: {
+        topLeft: 'PRABINA • ROUTER OS',
+        topRight: 'WI-FI 6 GIGABIT',
+        bottomLeft: 'ADGUARD • TOR • VPN',
+        bottomRight: 'WAN / LAN TELEMETRY',
+      },
     },
     {
-      id: 'feel-good-pizza',
-      client: 'FEEL GOOD PIZZA',
-      title: 'Artisanal sourdough pizzeria and lifestyle casual dining brand.',
-      tag: 'Brand & Packaging',
-      bgClass: 'bg-[#B91C1C] text-white',
-      preview: (
-        <div className="w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-red-600 to-red-900 p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.03] transition-transform duration-500">
-          <div className="flex justify-between text-xs font-mono text-white/80">
-            <span>SOURDOUGH ARTISAN</span>
-            <span>WOODFIRED</span>
-          </div>
-          <div className="text-center my-auto">
-            <span className="text-3xl sm:text-5xl font-black uppercase text-white tracking-tight">
-              FEEL GOOD PIZZA
-            </span>
-            <span className="block text-xs text-red-200 mt-1 font-mono">100% Organic San Marzano</span>
-          </div>
-          <div className="flex justify-between text-[11px] text-white/80 font-mono">
-            <span>NAPOLI STYLE</span>
-            <span>SLOW FERMENTED</span>
-          </div>
-        </div>
-      ),
+      id: 'hostel-management',
+      client: 'Hostel Management App',
+      title: 'A hostel management application designed to simplify student registration, room management, meal management, attendance, billing, and admin operations.',
+      tag: 'Mobile App / Management / SaaS',
+      headline: 'HOSTEL MANAGEMENT',
+      subtitle: 'Smarter Hostel Operations',
+      gradientClass: 'from-slate-900 via-indigo-950 to-black',
+      accentColor: 'text-indigo-300',
+      badges: {
+        topLeft: 'CAMPUS LIFE ECOSYSTEM',
+        topRight: 'ROLE-BASED PORTALS',
+        bottomLeft: 'MEAL TICKETS & BILLING',
+        bottomRight: 'AUTOMATED ATTENDANCE',
+      },
     },
   ];
 
@@ -233,7 +188,7 @@ export const SelectedWorkBrix: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* 2-Column Responsive Card Grid with Staggered Entrance and Smooth Tilt Lift */}
+        {/* Responsive Grid with Staggered Entrance and Smooth Hover */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <motion.div
@@ -241,13 +196,18 @@ export const SelectedWorkBrix: React.FC = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: (index % 2) * 0.15, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: (index % 2) * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6 }}
               className="bg-[#F5F5F5] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between gap-6 transition-shadow duration-300 hover:shadow-xl cursor-pointer group"
+              onClick={() => {
+                if (project.link) {
+                  window.open(project.link, '_blank');
+                }
+              }}
             >
               {/* Card Header Info */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between">
+              <div className="space-y-2.5">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#242424] group-hover:text-[#FF5819] transition-colors duration-200">
                     {project.client}
                   </span>
@@ -260,52 +220,73 @@ export const SelectedWorkBrix: React.FC = () => {
                 </p>
               </div>
 
-              {/* Mockup Canvas */}
-              {project.preview}
+              {/* Project Canvas Banner (Image or Stylized Card) */}
+              <div className={`w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br ${project.gradientClass} p-5 sm:p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 shadow-inner`}>
+                
+                {/* Background image if provided */}
+                {project.imageUrl ? (
+                  <>
+                    <img
+                      src={project.imageUrl}
+                      alt={project.client}
+                      className="absolute inset-0 w-full h-full object-cover object-top sm:object-center opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/50 pointer-events-none" />
+                  </>
+                ) : null}
+
+                {/* Top badges */}
+                <div className="relative z-10 flex justify-between items-center text-[10px] sm:text-xs font-mono tracking-wider">
+                  <span className={`px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-md border border-white/10 ${project.accentColor || 'text-white/80'}`}>
+                    {project.badges?.topLeft || project.client}
+                  </span>
+                  {project.badges?.topRight && (
+                    <span className="px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-md border border-white/10 text-white/70">
+                      {project.badges?.topRight}
+                    </span>
+                  )}
+                </div>
+
+                {/* Center headline / branding (if no image or clean overlay) */}
+                {!project.imageUrl && (
+                  <div className="relative z-10 text-center my-auto px-2">
+                    <span
+                      style={{
+                        fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
+                        letterSpacing: '-0.03em',
+                      }}
+                      className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white drop-shadow-md tracking-tight leading-tight"
+                    >
+                      {project.headline}
+                    </span>
+                    {project.subtitle && (
+                      <span className="block text-xs sm:text-sm text-white/80 mt-1.5 font-mono tracking-wide">
+                        {project.subtitle}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* Bottom badges */}
+                <div className="relative z-10 flex justify-between items-center text-[9px] sm:text-[11px] text-white/70 font-mono tracking-wider">
+                  {project.badges?.bottomLeft && (
+                    <span className="px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md border border-white/10">
+                      {project.badges?.bottomLeft}
+                    </span>
+                  )}
+                  {project.badges?.bottomRight && (
+                    <span className={`px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md border border-white/10 ${project.accentColor || 'text-white/80'}`}>
+                      {project.badges?.bottomRight}
+                    </span>
+                  )}
+                </div>
+
+                {/* Glow accent effect */}
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/5 rounded-full blur-2xl pointer-events-none" />
+              </div>
             </motion.div>
           ))}
         </div>
-
-        {/* More Works Wide Card with Scroll Entrance */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          whileHover={{ y: -4 }}
-          className="mt-8 bg-[#F5F5F5] rounded-[32px] p-8 sm:p-12 transition-shadow duration-300 hover:shadow-xl group cursor-pointer"
-        >
-          <div className="max-w-2xl space-y-3 mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#242424] group-hover:text-[#FF5819] transition-colors duration-200">
-              MORE WORKS
-            </span>
-            <p className="text-sm sm:text-base text-[#555555] leading-relaxed">
-              Showcasing more of our crafted design stories across fintech, retail, mobile applications, and hardware IoT interfaces.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-amber-700 to-amber-950 p-6 flex flex-col justify-between text-white border border-white/10 group-hover:scale-[1.02] transition-transform duration-500">
-              <span className="text-xs font-mono text-amber-200">SN JEWELLERS</span>
-              <div className="text-center my-auto">
-                <span className="text-2xl sm:text-3xl font-serif italic text-amber-100">
-                  Where Luxury meets Infinite Possibilities
-                </span>
-              </div>
-              <span className="text-[11px] font-mono text-amber-200">ESTD. 1998 • GOLD & DIAMONDS</span>
-            </div>
-
-            <div className="h-56 sm:h-72 rounded-2xl bg-gradient-to-br from-emerald-800 to-teal-950 p-6 flex flex-col justify-between text-white border border-white/10 group-hover:scale-[1.02] transition-transform duration-500">
-              <span className="text-xs font-mono text-emerald-200">DOOBTI PRODUCTIVITY</span>
-              <div className="text-center my-auto">
-                <span className="text-2xl sm:text-3xl font-sans font-bold text-white">
-                  Modern Time & Habit Tracking
-                </span>
-              </div>
-              <span className="text-[11px] font-mono text-emerald-200">WEB & MOBILE APP SUITE</span>
-            </div>
-          </div>
-        </motion.div>
 
       </div>
     </section>

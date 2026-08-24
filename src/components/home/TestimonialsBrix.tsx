@@ -56,9 +56,11 @@ export const TestimonialsBrix: React.FC = () => {
       {/* Giant Faded Watermark Behind (Matching Exact Screenshot) */}
       <div
         aria-hidden="true"
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none text-[13vw] font-black uppercase text-black/[0.03] tracking-tighter whitespace-nowrap leading-none z-0"
+        className="absolute inset-0 flex items-center justify-center select-none pointer-events-none z-0 overflow-hidden"
       >
-        studio primedev
+        <span className="text-[13vw] font-black uppercase text-black/[0.03] tracking-tighter whitespace-nowrap leading-none text-center">
+          studio primedev
+        </span>
       </div>
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

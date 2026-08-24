@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MobileNav, type NavItem } from './MobileNav';
-import { PrimeDevLogoMark } from '../common/PrimeDevLogoMark';
+import { Handshake } from 'lucide-react';
 import { useRouter } from '../../context/RouterContext';
 
 export interface HeaderProps {
@@ -71,15 +71,17 @@ export const Header: React.FC<HeaderProps> = ({
             ========================================================================= */}
         <div className="hidden md:flex pointer-events-auto items-center gap-3">
           
-          {/* Left Brand Circle Pill (54px x 54px with Bespoke Geometric P Mark) */}
+          {/* Left Brand Capsule (PrimeDev in bold without dot) */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="group relative overflow-hidden w-[52px] h-[52px] lg:w-[56px] lg:h-[56px] rounded-full bg-[#EAEAEA] backdrop-blur-md border border-black/[0.08] shadow-md flex items-center justify-center text-[#242424] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer select-none"
+            style={{
+              fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
+              letterSpacing: '-0.03em',
+            }}
+            className="group relative overflow-hidden h-[48px] lg:h-[54px] px-5 lg:px-6 rounded-full bg-[#EAEAEA] backdrop-blur-md border border-black/[0.08] shadow-md flex items-center justify-center text-lg lg:text-xl font-bold text-[#1E1E1E] hover:text-[#FF5819] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer select-none"
             aria-label="PrimeDev Home"
           >
-            <span className="relative z-10">
-              <PrimeDevLogoMark size={22} className="group-hover:scale-110 group-hover:text-[#FF5819]" />
-            </span>
+            <span className="relative z-10 font-extrabold tracking-tight">PrimeDev</span>
             {/* Subtle Sheen Shine */}
             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 pointer-events-none" />
           </button>
@@ -148,29 +150,17 @@ export const Header: React.FC<HeaderProps> = ({
             })}
           </nav>
 
-          {/* Right Action Circle Pill with Animated Video Camera Icon */}
+          {/* Right Action Circle Pill with Animated Handshake Icon */}
           <button
             onClick={() => navigate('book')}
             className="group relative overflow-hidden w-[52px] h-[52px] lg:w-[56px] lg:h-[56px] rounded-full bg-[#EAEAEA] backdrop-blur-md border border-black/[0.08] shadow-md flex items-center justify-center text-[#242424] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
-            aria-label="Book a Call / Video Call"
+            aria-label="Book a Call / Partner with Us"
           >
-            <span className="relative z-10">
-              <svg
-                className="group-hover:scale-110 group-hover:text-[#FF5819] transition-all duration-300 animate-icon-camera"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                {/* Chamfered Top-Left Camera Body with Hollow Center Window (1:1 with Reference) */}
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M 6.5 5.5 L 14.5 5.5 C 15.3 5.5, 16 6.2, 16 7 L 16 17 C 16 17.8, 15.3 18.5, 14.5 18.5 L 3.5 18.5 C 2.7 18.5, 2 17.8, 2 17 L 2 10 L 6.5 5.5 Z M 5.5 9 L 12.5 9 C 12.8 9, 13 9.2, 13 9.5 L 13 14.5 C 13 14.8, 12.8 15, 12.5 15 L 5.5 15 C 5.2 15, 5 14.8, 5 14.5 L 5 9.5 C 5 9.2, 5.2 9, 5.5 9 Z"
-                />
-                {/* Right Camera Lens */}
-                <path d="M 18 10 L 22.2 6.8 C 22.7 6.4, 23.5 6.8, 23.5 7.4 L 23.5 16.6 C 23.5 17.2, 22.7 17.6, 22.2 17.2 L 18 14 Z" />
-              </svg>
+            <span className="relative z-10 flex items-center justify-center">
+              <Handshake
+                className="w-5 h-5 lg:w-[22px] lg:h-[22px] group-hover:scale-110 group-hover:text-[#FF5819] transition-all duration-300 animate-icon-handshake"
+                strokeWidth={2.1}
+              />
             </span>
             {/* Subtle Sheen Shine */}
             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 pointer-events-none" />

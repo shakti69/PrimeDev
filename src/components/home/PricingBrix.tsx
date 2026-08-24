@@ -9,20 +9,24 @@ export const PricingBrix: React.FC = () => {
   return (
     <section id="pricing" className="py-16 sm:py-32 bg-white relative overflow-hidden">
       
-      {/* Giant Faded PRICING Watermark with subtle float */}
+      {/* Giant Faded PRICING Watermark perfectly centered */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         aria-hidden="true"
-        style={{
-          fontFamily: '"Pangea Afrikan Trial", sans-serif',
-          letterSpacing: '-0.04em',
-        }}
-        className="absolute top-4 sm:top-6 left-1/2 -translate-x-1/2 select-none pointer-events-none text-[18vw] sm:text-[16vw] font-black uppercase text-black/[0.04] whitespace-nowrap leading-none z-0"
+        className="absolute top-2 sm:top-4 left-0 right-0 w-full flex justify-center items-center select-none pointer-events-none z-0 overflow-hidden"
       >
-        PRICING
+        <span
+          style={{
+            fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
+            letterSpacing: '-0.04em',
+          }}
+          className="text-[18vw] sm:text-[15vw] font-black uppercase text-black/[0.04] whitespace-nowrap leading-none text-center block"
+        >
+          PRICING
+        </span>
       </motion.div>
 
       <div className="max-w-[1040px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -49,8 +53,8 @@ export const PricingBrix: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* Mobile / Tablet Filter Toggle Pill (1:1 with Screenshot 5) */}
-        <div className="flex items-center justify-center mb-10 sm:mb-14">
+        {/* Mobile Filter Toggle Pill (Only visible on mobile/phone, hidden on PC/desktop) */}
+        <div className="flex md:hidden items-center justify-center mb-10">
           <div className="inline-flex p-1.5 rounded-full bg-[#EAEAEA] border border-black/5 shadow-inner">
             <button
               onClick={() => setActiveTab('monthly')}

@@ -38,6 +38,7 @@ import {
   Repeat,
   Clock,
   Users,
+  Handshake,
   type LucideProps
 } from 'lucide-react';
 
@@ -92,6 +93,7 @@ export const Icons = {
   Repeat,
   Clock,
   Users,
+  Handshake,
 };
 
 export type IconName = keyof typeof Icons;
