@@ -8,76 +8,75 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Deep obsidian dark neutral scale
-        obsidian: {
-          950: '#06080D', // Deepest background
-          900: '#0B0F17', // Base canvas
-          850: '#101622', // Surface layer 1
-          800: '#161F2E', // Surface layer 2 / Card bg
-          750: '#1D283A', // Elevated hover surface
-          700: '#26344B', // Subtle borders
-          600: '#3B4D6B', // Secondary borders / muted text
-          500: '#64748B', // Muted slate
-          400: '#94A3B8', // Subtitle text
-          300: '#CBD5E1', // Body text (dark mode)
-          200: '#E2E8F0', // Strong body text
-          100: '#F1F5F9', // High-contrast text
-          50: '#F8FAFC',  // Light mode background
-        },
-        // Signature Electric Cobalt Accent
+        // Brix Studio Signature Orange-Red Accent
         brand: {
-          50: '#EFF6FF',
-          100: '#DBEAFE',
-          200: '#BFDBFE',
-          300: '#93C5FD',
-          400: '#60A5FA',
-          500: '#3B82F6', // Primary brand accent
-          600: '#2563EB', // Primary interactive accent
-          700: '#1D4ED8',
-          800: '#1E40AF',
-          900: '#1E3A8A',
-          950: '#172554',
-          glow: 'rgba(59, 130, 246, 0.18)',
+          50: '#FFF5F2',
+          100: '#FFEBE5',
+          200: '#FFD6CC',
+          300: '#FFA894',
+          400: '#FF7A5C',
+          500: '#FF4E27', // Primary Brix orange
+          600: '#E83D16', // Hover orange
+          700: '#C42E0D',
+          800: '#9C250B',
+          900: '#7A1F0A',
+          950: '#450D03',
+          glow: 'rgba(255, 78, 39, 0.22)',
         },
-        // Functional / Semantic feedback tokens
-        accent: {
-          emerald: '#10B981',
-          amber: '#F59E0B',
-          rose: '#F43F5E',
-          cyan: '#06B6D4',
+        // Neutral Surfaces
+        surface: {
+          canvas: '#FBFBFD',     // Main background
+          card: '#F2F3F6',       // Light gray card surface
+          cardHover: '#EAECEF',
+          dark: '#0D0E12',       // Dark section container
+          darkElevated: '#16171D',
+          darkBorder: '#23252E',
+        },
+        obsidian: {
+          950: '#07080A',
+          900: '#0D0E12',
+          850: '#14151B',
+          800: '#1A1C24',
+          750: '#232530',
+          700: '#2F3240',
+          600: '#474B5E',
+          500: '#686D82',
+          400: '#9197AB',
+          300: '#CBD0DC',
+          200: '#E4E7EE',
+          100: '#F4F5F8',
+          50: '#FBFBFD',
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-        display: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+        sans: ['"Pangea Afrikan Trial"', '"Suisse Int\'l"', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['"Pangea Afrikan Trial"', '"Suisse Int\'l"', 'Inter', 'sans-serif'],
+        mono: ['"DM Mono"', '"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       letterSpacing: {
         tighter: '-0.04em',
-        tight: '-0.02em',
+        tight: '-0.025em',
         editorial: '-0.035em',
+        eyebrow: '0.12em',
+      },
+      borderRadius: {
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+        '4xl': '2rem',
+        '5xl': '2.5rem',
       },
       boxShadow: {
-        'subtle': '0 1px 2px 0 rgba(0, 0, 0, 0.25)',
-        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.35)',
-        'card-hover': '0 12px 32px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.15)',
-        'glow-sm': '0 0 16px -2px rgba(59, 130, 246, 0.25)',
-        'glow-md': '0 0 28px -4px rgba(59, 130, 246, 0.35)',
-        'glow-lg': '0 0 48px -6px rgba(59, 130, 246, 0.45)',
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'grid-pattern': 'linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
-        'grid-pattern-light': 'linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px)',
-        'dot-pattern': 'radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'fade-up': 'fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'pulse-subtle': 'pulseSubtle 3s ease-in-out infinite',
-        'spotlight': 'spotlight 2s ease .75s 1 forwards',
+        'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.04)',
+        'card': '0 4px 20px -2px rgba(0, 0, 0, 0.06)',
+        'card-hover': '0 16px 36px -4px rgba(0, 0, 0, 0.1)',
+        'card-dark': '0 8px 32px -4px rgba(0, 0, 0, 0.5)',
+        'orange-glow': '0 8px 24px -4px rgba(255, 78, 39, 0.35)',
       },
       keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
@@ -86,10 +85,11 @@ export default {
           '0%': { opacity: '0', transform: 'translateY(16px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        pulseSubtle: {
-          '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.6' },
-        },
+      },
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+        'fade-in': 'fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-up': 'fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
     },
   },

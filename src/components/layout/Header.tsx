@@ -1,144 +1,185 @@
-import React, { useState, useEffect } from 'react';
-import { Icons, BrandLogo } from '../ui/Icons';
-import { Button } from '../ui/Button';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { MobileNav, type NavItem } from './MobileNav';
-import { useTheme } from '../../context/ThemeContext';
-import { useRouter, type PageId } from '../../context/RouterContext';
+import { PrimeDevLogoMark } from '../common/PrimeDevLogoMark';
+import { useRouter } from '../../context/RouterContext';
 
 export interface HeaderProps {
   navItems?: NavItem[];
 }
 
 const DEFAULT_NAV_ITEMS: NavItem[] = [
-  { id: 'home', label: 'Home', href: '#/' },
-  { id: 'about', label: 'About', href: '#/about' },
-  { id: 'services', label: 'Services', href: '#/services' },
-  { id: 'work', label: 'Work', href: '#/work' },
-  { id: 'contact', label: 'Contact', href: '#/contact' },
+  { id: 'work', label: 'Work', href: '#work' },
+  { id: 'services', label: 'Services', href: '#services' },
+  { id: 'process', label: 'Process', href: '#process' },
+  { id: 'pricing', label: 'Plans', href: '#pricing' },
+  { id: 'faq', label: 'Faqs', href: '#faq' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({
   navItems = DEFAULT_NAV_ITEMS,
 }) => {
-  const { theme, toggleTheme } = useTheme();
-  const { route, navigate } = useRouter();
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { navigate } = useRouter();
+  const [activeId, setActiveId] = useState('work');
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const handleNavClick = (id: string) => {
-    navigate(id as PageId);
+    setActiveId(id);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
-
-  // Determine active item from route
-  const getActiveId = () => {
-    if (route.page === 'service-detail') return 'services';
-    if (route.page === 'project-detail') return 'work';
-    return route.page;
-  };
-
-  const activeId = getActiveId();
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-[var(--bg-card)] backdrop-blur-xl border-b border-[var(--border-subtle)] py-3 shadow-md shadow-black/5 dark:shadow-black/20'
-            : 'bg-transparent py-5 border-b border-transparent'
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Brand Logo & Wordmark */}
+      <header className="fixed top-4 sm:top-6 left-0 right-0 z-50 flex items-center justify-center px-4 pointer-events-none">
+        
+        {/* =========================================================================
+            MOBILE FLOATING CAPSULE HEADER (< 768px) (Exact 1:1 with Screenshot 1)
+            ========================================================================= */}
+        <div className="md:hidden pointer-events-auto w-full max-w-[440px] h-[58px] rounded-full bg-white/95 backdrop-blur-md border border-black/10 shadow-lg px-6 flex items-center justify-between">
+          {/* Left Brand Title */}
           <button
-            onClick={() => navigate('home')}
-            className="flex items-center gap-2.5 group cursor-pointer text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded-xl p-1"
-            aria-label="PrimeDev Home"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            style={{
+              fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
+              letterSpacing: '-0.03em',
+            }}
+            className="text-2xl font-bold text-[#1E1E1E] tracking-tight cursor-pointer"
           >
-            <BrandLogo size={32} className="transition-transform duration-300 group-hover:scale-105" />
-            <div className="flex flex-col">
-              <span className="text-base font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-1">
-                Prime<span className="text-brand-500 dark:text-brand-400">Dev</span>
-                <span className="text-[10px] uppercase font-mono px-1.5 py-0.2 rounded bg-black/[0.04] dark:bg-white/[0.06] text-[var(--text-muted)] border border-[var(--border-subtle)] ml-1 hidden sm:inline-block">
-                  v2026
-                </span>
-              </span>
-            </div>
+            PrimeDev
           </button>
 
-          {/* Desktop Navigation Links */}
+          {/* Right Hamburger Icon */}
+          <button
+            onClick={() => setIsMobileOpen(true)}
+            className="w-10 h-10 -mr-2 rounded-full flex items-center justify-center text-[#1E1E1E] hover:bg-black/5 active:scale-95 transition-all cursor-pointer"
+            aria-label="Open Menu"
+          >
+            <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+              <line x1="1" y1="1.5" x2="21" y2="1.5" />
+              <line x1="1" y1="8" x2="21" y2="8" />
+              <line x1="1" y1="14.5" x2="21" y2="14.5" />
+            </svg>
+          </button>
+        </div>
+
+        {/* =========================================================================
+            DESKTOP FLOATING 3-ELEMENT NAVIGATION (>= 768px)
+            ========================================================================= */}
+        <div className="hidden md:flex pointer-events-auto items-center gap-3">
+          
+          {/* Left Brand Circle Pill (54px x 54px with Bespoke Geometric P Mark) */}
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="group relative overflow-hidden w-[52px] h-[52px] lg:w-[56px] lg:h-[56px] rounded-full bg-[#EAEAEA] backdrop-blur-md border border-black/[0.08] shadow-md flex items-center justify-center text-[#242424] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer select-none"
+            aria-label="PrimeDev Home"
+          >
+            <span className="relative z-10">
+              <PrimeDevLogoMark size={22} className="group-hover:scale-110 group-hover:text-[#FF5819]" />
+            </span>
+            {/* Subtle Sheen Shine */}
+            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 pointer-events-none" />
+          </button>
+
+          {/* Center Links Container with Pure Smooth Sliding Capsule (Zero Jitter) */}
           <nav
             aria-label="Main Navigation"
-            className="hidden lg:flex items-center gap-1 bg-[var(--bg-card)] p-1.5 rounded-full border border-[var(--border-subtle)] backdrop-blur-md shadow-sm"
+            onMouseLeave={() => setHoveredId(null)}
+            style={{
+              backgroundColor: 'rgba(38, 38, 38, 0.88)',
+              backdropFilter: 'blur(28px)',
+              WebkitBackdropFilter: 'blur(28px)',
+              boxShadow: '0 20px 35px -10px rgba(0, 0, 0, 0.4), inset 1px 1px 2px rgba(255,255,255,0.18)',
+            }}
+            className="flex items-center gap-1 p-1.5 rounded-full border border-white/10 relative"
           >
             {navItems.map((item) => {
               const isActive = activeId === item.id;
+              const isHovered = hoveredId === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
+                  onMouseEnter={() => setHoveredId(item.id)}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${
-                    isActive
-                      ? 'bg-brand-500/10 text-brand-600 dark:text-white dark:bg-white/[0.1] shadow-sm font-semibold'
-                      : 'text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-black/[0.04] dark:hover:bg-white/[0.04]'
-                  }`}
+                  className="relative px-5 py-2.5 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer select-none"
                 >
-                  {item.label}
+                  {/* Smooth Hover Highlight Capsule */}
+                  {isHovered && !isActive && (
+                    <motion.div
+                      layoutId="navbar-hover-capsule"
+                      className="absolute inset-0 rounded-full bg-white/10"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 500,
+                        damping: 35,
+                      }}
+                    />
+                  )}
+
+                  {/* Pure Smooth Active White Sliding Capsule */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="navbar-active-capsule"
+                      className="absolute inset-0 rounded-full bg-white shadow-sm"
+                      transition={{
+                        type: 'spring',
+                        stiffness: 450,
+                        damping: 32,
+                      }}
+                    />
+                  )}
+
+                  {/* Link Text */}
+                  <span
+                    className={`relative z-10 transition-colors duration-200 ${
+                      isActive
+                        ? 'text-[#242424] font-semibold'
+                        : 'text-white/70 hover:text-white'
+                    }`}
+                  >
+                    {item.label}
+                  </span>
                 </button>
               );
             })}
           </nav>
 
-          {/* Actions: Theme toggle + CTA + Mobile launcher */}
-          <div className="flex items-center gap-2.5">
-            <button
-              onClick={toggleTheme}
-              className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] hover:bg-[var(--bg-card-hover)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 shadow-sm"
-              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-            >
-              {theme === 'dark' ? (
-                <Icons.Sun className="w-4 h-4 text-amber-400" />
-              ) : (
-                <Icons.Moon className="w-4 h-4 text-brand-600" />
-              )}
-            </button>
-
-            <div className="hidden sm:block">
-              <Button
-                variant="primary"
-                size="sm"
-                magnetic
-                rightIcon={<Icons.ArrowUpRight className="w-3.5 h-3.5" />}
-                onClick={() => navigate('contact')}
+          {/* Right Action Circle Pill with Animated Video Camera Icon */}
+          <button
+            onClick={() => navigate('book')}
+            className="group relative overflow-hidden w-[52px] h-[52px] lg:w-[56px] lg:h-[56px] rounded-full bg-[#EAEAEA] backdrop-blur-md border border-black/[0.08] shadow-md flex items-center justify-center text-[#242424] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+            aria-label="Book a Call / Video Call"
+          >
+            <span className="relative z-10">
+              <svg
+                className="group-hover:scale-110 group-hover:text-[#FF5819] transition-all duration-300 animate-icon-camera"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
               >
-                Start Inquiry
-              </Button>
-            </div>
+                {/* Chamfered Top-Left Camera Body with Hollow Center Window (1:1 with Reference) */}
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M 6.5 5.5 L 14.5 5.5 C 15.3 5.5, 16 6.2, 16 7 L 16 17 C 16 17.8, 15.3 18.5, 14.5 18.5 L 3.5 18.5 C 2.7 18.5, 2 17.8, 2 17 L 2 10 L 6.5 5.5 Z M 5.5 9 L 12.5 9 C 12.8 9, 13 9.2, 13 9.5 L 13 14.5 C 13 14.8, 12.8 15, 12.5 15 L 5.5 15 C 5.2 15, 5 14.8, 5 14.5 L 5 9.5 C 5 9.2, 5.2 9, 5.5 9 Z"
+                />
+                {/* Right Camera Lens */}
+                <path d="M 18 10 L 22.2 6.8 C 22.7 6.4, 23.5 6.8, 23.5 7.4 L 23.5 16.6 C 23.5 17.2, 22.7 17.6, 22.2 17.2 L 18 14 Z" />
+              </svg>
+            </span>
+            {/* Subtle Sheen Shine */}
+            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 pointer-events-none" />
+          </button>
 
-            {/* Mobile Hamburger */}
-            <button
-              onClick={() => setIsMobileOpen(true)}
-              aria-expanded={isMobileOpen}
-              aria-controls="mobile-nav-drawer"
-              aria-label="Open mobile navigation menu"
-              className="lg:hidden p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl border border-[var(--border-subtle)] bg-[var(--bg-card)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 shadow-sm"
-            >
-              <Icons.Menu className="w-5 h-5" />
-            </button>
-          </div>
         </div>
       </header>
 
-      {/* Mobile Navigation Drawer */}
+      {/* Mobile Drawer (1:1 with Screenshot 2) */}
       <MobileNav
         isOpen={isMobileOpen}
         onClose={() => setIsMobileOpen(false)}

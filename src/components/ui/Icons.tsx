@@ -23,6 +23,21 @@ import {
   Terminal,
   X,
   Zap,
+  Plus,
+  Phone,
+  MessageSquare,
+  Monitor,
+  Smartphone,
+  Package,
+  Box,
+  RotateCcw,
+  HelpCircle,
+  CheckCircle2,
+  Star,
+  Palette,
+  Repeat,
+  Clock,
+  Users,
   type LucideProps
 } from 'lucide-react';
 
@@ -62,44 +77,44 @@ export const Icons = {
   Terminal,
   X,
   Zap,
+  Plus,
+  Phone,
+  MessageSquare,
+  Monitor,
+  Smartphone,
+  Package,
+  Box,
+  RotateCcw,
+  HelpCircle,
+  CheckCircle2,
+  Star,
+  Palette,
+  Repeat,
+  Clock,
+  Users,
 };
 
 export type IconName = keyof typeof Icons;
 
 /**
- * PrimeDev Custom Geometric Monogram Logo
+ * PrimeDev Custom Geometric Monogram Logo matching Brix Studio styling
  */
-export const BrandLogo: React.FC<{ className?: string; size?: number }> = ({ 
+export const BrandLogo: React.FC<{ className?: string; size?: number; inverted?: boolean }> = ({ 
   className = "w-8 h-8", 
-  size = 32 
+  size = 32,
+  inverted = false
 }) => {
   return (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 36 36" 
-      fill="none" 
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
+    <div 
+      style={{ width: size, height: size }}
+      className={`rounded-full flex items-center justify-center font-black text-sm select-none transition-transform duration-200 ${
+        inverted 
+          ? 'bg-white text-[#FF4E27]' 
+          : 'bg-[#FF4E27] text-white shadow-sm'
+      } ${className}`}
     >
-      <rect width="36" height="36" rx="10" fill="#0B0F17" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-      <path 
-        d="M11 10H20C23.3137 10 26 12.6863 26 16C26 19.3137 23.3137 22 20 22H15.5V26H11V10Z" 
-        fill="url(#logo-grad)" 
-      />
-      <circle cx="15.5" cy="16" r="2.5" fill="#06080D" />
-      <path 
-        d="M21 22L26 26" 
-        stroke="#60A5FA" 
-        strokeWidth="2" 
-        strokeLinecap="round" 
-      />
-      <defs>
-        <linearGradient id="logo-grad" x1="11" y1="10" x2="26" y2="26" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#60A5FA" />
-          <stop offset="1" stopColor="#2563EB" />
-        </linearGradient>
-      </defs>
-    </svg>
+      <span className="leading-none tracking-tighter" style={{ fontSize: size * 0.55 }}>p</span>
+    </div>
   );
 };
+

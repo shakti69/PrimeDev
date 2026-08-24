@@ -1,7 +1,12 @@
 {
-  "name": "ready-made",
+  "name": "primedev",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "homepage": "https://shakti69.github.io/PrimeDev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shakti69/PrimeDev.git"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",

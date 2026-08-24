@@ -5,7 +5,8 @@ export type PageId =
   | 'service-detail'
   | 'work'
   | 'project-detail'
-  | 'contact';
+  | 'contact'
+  | 'book';
 
 export interface RouteState {
   page: PageId;
@@ -22,6 +23,7 @@ export function parseHash(hash: string): RouteState {
   const main = parts[0];
   const sub = parts[1];
 
+  if (main === 'book' || main === 'book-call' || main === 'book-a-call') return { page: 'book' };
   if (main === 'about') return { page: 'about' };
   if (main === 'services') {
     if (sub) return { page: 'service-detail', param: sub };
@@ -31,7 +33,7 @@ export function parseHash(hash: string): RouteState {
     if (sub) return { page: 'project-detail', param: sub };
     return { page: 'work' };
   }
-  if (main === 'contact') return { page: 'contact' };
+  if (main === 'contact') return { page: 'book' };
 
   return { page: 'home' };
 }
@@ -40,6 +42,8 @@ export function routeToHash(route: RouteState): string {
   switch (route.page) {
     case 'home':
       return '#/';
+    case 'book':
+      return '#/book';
     case 'about':
       return '#/about';
     case 'services':
@@ -51,7 +55,7 @@ export function routeToHash(route: RouteState): string {
     case 'project-detail':
       return `#/work/${route.param || ''}`;
     case 'contact':
-      return '#/contact';
+      return '#/book';
     default:
       return '#/';
   }

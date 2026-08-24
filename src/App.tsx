@@ -10,9 +10,8 @@ import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ServiceDetailPage } from './pages/ServiceDetailPage';
-import { WorkPage } from './pages/WorkPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
-import { ContactPage } from './pages/ContactPage';
+import { BookCallPage } from './pages/BookCallPage';
 
 const AppContent: React.FC = () => {
   const { route } = useRouter();
@@ -22,18 +21,20 @@ const AppContent: React.FC = () => {
     switch (route.page) {
       case 'home':
         return <HomePage />;
+      case 'work':
+        return <HomePage />;
+      case 'book':
+        return <BookCallPage />;
+      case 'contact':
+        return <BookCallPage />;
       case 'about':
         return <AboutPage />;
       case 'services':
         return <ServicesPage />;
       case 'service-detail':
         return <ServiceDetailPage serviceId={route.param} />;
-      case 'work':
-        return <WorkPage />;
       case 'project-detail':
         return <ProjectDetailPage projectId={route.param} />;
-      case 'contact':
-        return <ContactPage />;
       default:
         return <HomePage />;
     }

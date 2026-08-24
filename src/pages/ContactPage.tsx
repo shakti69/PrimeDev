@@ -41,21 +41,18 @@ export const ContactPage: React.FC = () => {
   return (
     <div className="w-full">
       {/* Contact Header */}
-      <Section withGrid className="pt-12 pb-20 border-b border-[var(--border-subtle)]">
+      <div className="pt-28 sm:pt-36 pb-12">
         <Container>
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <Reveal direction="up" delay={50}>
-              <Badge variant="accent" size="md" dot pulse>
-                Inquiries & Discovery
-              </Badge>
+              <span className="brix-eyebrow">
+                INQUIRIES & DISCOVERY
+              </span>
             </Reveal>
 
             <Reveal direction="up" delay={150}>
               <h1 className="text-4xl sm:text-6xl font-extrabold tracking-editorial text-[var(--text-primary)] leading-tight">
-                Initiate an Engineering{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-brand-500">
-                  Discovery Session.
-                </span>
+                Initiate an Engineering Discovery Session.
               </h1>
             </Reveal>
 
@@ -66,7 +63,7 @@ export const ContactPage: React.FC = () => {
             </Reveal>
           </div>
         </Container>
-      </Section>
+      </div>
 
       {/* Main Form & Contact Info Section */}
       <Section bordered>

@@ -2,43 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
+/* =========================================================================
+   EXACT BRIX STUDIO / PRIMEDEV FONT-FACE DEFINITIONS
+   ========================================================================= */
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-SemiBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-SemiBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pangea Afrikan Trial';
+  src: url('/fonts/PangeaAfrikanTrial-SemiBold.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Suisse Int\'l';
+  src: url('/fonts/SuisseIntl-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Suisse Int\'l';
+  src: url('/fonts/SuisseIntl-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Suisse Int\'l';
+  src: url('/fonts/SuisseIntl-Medium.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('/fonts/DMMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
-    --bg-primary: #06080D;
-    --bg-surface: #0B0F17;
-    --bg-elevated: #101622;
-    --bg-card: rgba(16, 22, 34, 0.9);
-    --bg-card-hover: rgba(22, 31, 46, 0.95);
-    --bg-card-subtle: rgba(29, 40, 58, 0.6);
-    --bg-input: #06080D;
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-highlight: rgba(255, 255, 255, 0.16);
-    --text-primary: #F1F5F9;
-    --text-secondary: #CBD5E1;
-    --text-muted: #94A3B8;
-    --text-subtle: #64748B;
-    --accent-cobalt: #3B82F6;
-    --accent-glow: rgba(59, 130, 246, 0.18);
-    --spotlight-color: rgba(59, 130, 246, 0.12);
-  }
-
-  .light {
-    --bg-primary: #F8FAFC;
+    --bg-primary: #FFFFFF;
     --bg-surface: #FFFFFF;
-    --bg-elevated: #F1F5F9;
-    --bg-card: rgba(255, 255, 255, 0.92);
-    --bg-card-hover: rgba(255, 255, 255, 1);
-    --bg-card-subtle: rgba(241, 245, 249, 0.9);
-    --bg-input: #FFFFFF;
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    --border-highlight: rgba(0, 0, 0, 0.16);
-    --text-primary: #0F172A;
-    --text-secondary: #334155;
-    --text-muted: #64748B;
-    --text-subtle: #94A3B8;
-    --accent-cobalt: #2563EB;
-    --accent-glow: rgba(37, 99, 235, 0.10);
-    --spotlight-color: rgba(37, 99, 235, 0.08);
+    --bg-card: #F5F5F5;
+    --bg-card-hover: #ECECEC;
+    --bg-dark-section: #1E1D1D;
+    --border-subtle: rgba(36, 36, 36, 0.08);
+    --border-dark: rgba(255, 255, 255, 0.1);
+    --text-primary: #242424;
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --accent-orange: #FF5819;
   }
 
   html {
@@ -49,131 +117,68 @@
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif;
+    font-family: 'Pangea Afrikan Trial', 'Suisse Int\'l', -apple-system, sans-serif;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.25s ease, color 0.25s ease;
-  }
-
-  /* Accessible focus indicators for keyboard navigation */
-  :focus-visible {
-    outline: 2px solid var(--accent-cobalt);
-    outline-offset: 2px;
   }
 }
 
 @layer components {
-  /* Architectural Card with Precision Border Sheen */
-  .prime-card {
-    position: relative;
-    border-radius: 1rem;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    backdrop-filter: blur(12px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  /* Brix Pill Button Primary with Luxury Sheen & Magnetic Spring Lift */
+  .btn-brix-orange {
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm text-white bg-[#FF5819] hover:bg-[#FF4500] hover:shadow-[0_12px_28px_-4px_rgba(255,88,25,0.5)] transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] cursor-pointer;
   }
 
-  .prime-card-interactive {
-    @apply prime-card hover:shadow-card-hover hover:-translate-y-0.5 cursor-pointer;
+  /* Brix Pill Button Outline with Sheen */
+  .btn-brix-outline {
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-sm text-[#1E1E1E] border border-black/15 bg-white hover:bg-[#F8F8F8] hover:border-black/30 hover:shadow-md transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.97] cursor-pointer;
   }
 
-  .prime-card-interactive:hover {
-    background-color: var(--bg-card-hover);
-    border-color: rgba(59, 130, 246, 0.35);
+  /* Professional Button Sheen Sweep */
+  .btn-sheen {
+    @apply relative overflow-hidden;
   }
-
-  /* Glass Surface */
-  .glass-panel {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-
-  /* Subtle Ambient Background Gradients */
-  .ambient-glow {
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.45;
-    transition: opacity 0.3s ease;
-  }
-
-  .light .ambient-glow {
-    opacity: 0.18;
-  }
-
-  /* Shimmer button overlay */
-  .btn-shimmer {
-    position: relative;
-    overflow: hidden;
-  }
-  .btn-shimmer::after {
+  .btn-sheen::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      60deg,
-      transparent 30%,
-      rgba(255, 255, 255, 0.18) 50%,
-      transparent 70%
-    );
-    transform: rotate(30deg) translateX(-100%);
-    transition: transform 0.6s ease;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+    transform: skewX(-20deg);
+    transition: none;
+    pointer-events: none;
   }
-  .btn-shimmer:hover::after {
-    transform: rotate(30deg) translateX(100%);
+  .btn-sheen:hover::after {
+    left: 140%;
+    transition: all 0.75s ease-in-out;
   }
 
-  /* Hairline Grid lines background helper */
-  .bg-grid {
-    background-size: 32px 32px;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  /* Eyebrow Label */
+  .brix-eyebrow {
+    @apply text-[11px] sm:text-xs font-bold tracking-widest text-brand-500 uppercase font-sans;
   }
 
-  .light .bg-grid {
-    background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+  /* Watermark Faded Text */
+  .watermark-text {
+    @apply absolute select-none pointer-events-none font-extrabold tracking-tighter uppercase text-black/[0.03] dark:text-white/[0.03] leading-none;
   }
 
-  /* Dot matrix background helper */
-  .bg-dots {
-    background-size: 24px 24px;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  /* Clean Brix Card */
+  .brix-card {
+    @apply bg-[var(--bg-card)] rounded-3xl transition-all duration-300;
   }
 
-  .light .bg-dots {
-    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  .brix-card-white {
+    @apply bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-3xl shadow-card transition-all duration-300 hover:shadow-card-hover;
   }
 }
 
-/* Reduced Motion Support for Accessibility (WCAG 2.1 compliance) */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .ambient-glow {
-    display: none !important;
-  }
-}
-
-/* Custom Minimalist Scrollbars */
+/* Minimalist Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -184,18 +189,139 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 9999px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.light ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+/* =========================================================================
+   RICH INTERACTIVE ICON ANIMATIONS
+   ========================================================================= */
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
 }
 
-.light ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+@keyframes iconPulseGlow {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 6px rgba(255, 88, 25, 0.6)); }
 }
+
+@keyframes iconWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+@keyframes iconRocket {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(3px, -4px); }
+}
+
+@keyframes iconPencilWrite {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  30% { transform: translate(-2px, -2px) rotate(-10deg); }
+  70% { transform: translate(2px, 2px) rotate(5deg); }
+}
+
+@keyframes iconHeartBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.25); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+}
+
+@keyframes iconBezierSlide {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(4px, -3px); }
+}
+
+@keyframes iconCameraRecord {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.92); opacity: 0.8; }
+}
+
+.animate-icon-float {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.animate-icon-pulse-glow {
+  animation: iconPulseGlow 2.2s ease-in-out infinite;
+}
+
+.animate-icon-wiggle {
+  animation: iconWiggle 2.5s ease-in-out infinite;
+}
+
+.animate-icon-rocket {
+  animation: iconRocket 2.5s ease-in-out infinite;
+}
+
+.animate-icon-pencil {
+  animation: iconPencilWrite 2.8s ease-in-out infinite;
+}
+
+.animate-icon-heart {
+  animation: iconHeartBeat 2s ease-in-out infinite;
+}
+
+.animate-icon-bezier {
+  animation: iconBezierSlide 3s ease-in-out infinite;
+}
+
+.animate-icon-camera {
+  animation: iconCameraRecord 2s ease-in-out infinite;
+}
+
+@keyframes auraDrift {
+  0%, 100% {
+    transform: translate(-50%, -10%) scale(1) rotate(0deg);
+    opacity: 0.75;
+  }
+  33% {
+    transform: translate(-45%, -5%) scale(1.12) rotate(3deg);
+    opacity: 0.95;
+  }
+  66% {
+    transform: translate(-55%, -15%) scale(0.92) rotate(-3deg);
+    opacity: 0.8;
+  }
+}
+
+@keyframes auraDriftSecondary {
+  0%, 100% {
+    transform: translate(-50%, 8%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, 14%) scale(1.18);
+    opacity: 0.85;
+  }
+}
+
+@keyframes shimmerWave {
+  0% {
+    stop-color: rgba(255, 88, 25, 0.2);
+  }
+  50% {
+    stop-color: rgba(255, 255, 255, 0.65);
+  }
+  100% {
+    stop-color: rgba(255, 88, 25, 0.2);
+  }
+}
+
+.animate-aura-drift {
+  animation: auraDrift 9s ease-in-out infinite;
+}
+
+.animate-aura-drift-secondary {
+  animation: auraDriftSecondary 7s ease-in-out infinite;
+}
+
+
+

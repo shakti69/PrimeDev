@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Icons, BrandLogo } from '../ui/Icons';
-import { Button } from '../ui/Button';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from '../../context/RouterContext';
 
 export interface NavItem {
   id: string;
@@ -20,9 +20,10 @@ export const MobileNav: React.FC<MobileNavProps> = ({
   isOpen,
   onClose,
   items,
-  activeId,
   onItemClick,
 }) => {
+  const { navigate } = useRouter();
+
   // Lock body scroll when mobile nav is open
   useEffect(() => {
     if (isOpen) {
@@ -46,94 +47,107 @@ export const MobileNav: React.FC<MobileNavProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   return (
-    <div
-      id="mobile-nav-drawer"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Mobile Navigation"
-      className="fixed inset-0 z-50 lg:hidden"
-    >
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/60 dark:bg-obsidian-950/80 backdrop-blur-md transition-opacity duration-300"
-        onClick={onClose}
-        aria-hidden="true"
-      />
+    <AnimatePresence>
+      {isOpen && (
+        <div
+          id="mobile-nav-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile Navigation"
+          className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-6 sm:pt-8 md:hidden"
+        >
+          {/* Backdrop with Blur */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 bg-black/70 backdrop-blur-md"
+            onClick={onClose}
+            aria-hidden="true"
+          />
 
-      {/* Drawer */}
-      <div className="relative flex flex-col justify-between h-full w-full max-w-sm bg-[var(--bg-surface)] border-r border-[var(--border-subtle)] p-6 shadow-2xl animate-fade-in z-10">
-        <div>
-          {/* Header row */}
-          <div className="flex items-center justify-between pb-6 border-b border-[var(--border-subtle)]">
-            <div className="flex items-center gap-2.5">
-              <BrandLogo size={32} />
-              <span className="font-bold text-base text-[var(--text-primary)] tracking-tight">
-                Prime<span className="text-brand-500 dark:text-brand-400">Dev</span>
+          {/* Centered Floating Dark Menu Card (1:1 with Screenshot 2) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94, y: -15 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.94, y: -15 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="relative w-full max-w-[390px] rounded-[32px] bg-[#1E1D1D] border border-white/10 text-white p-7 sm:p-8 shadow-2xl z-10 flex flex-col justify-between min-h-[500px]"
+          >
+            {/* Top Header Row: Brand Logo + Close Button */}
+            <div className="flex items-center justify-between pb-4">
+              <span
+                style={{
+                  fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
+                  letterSpacing: '-0.02em',
+                }}
+                className="text-2xl font-bold text-white tracking-tight"
+              >
+                PrimeDev
               </span>
-            </div>
-            <button
-              onClick={onClose}
-              className="p-2.5 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:bg-black/[0.04] dark:hover:bg-white/[0.06] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
-              aria-label="Close navigation"
-            >
-              <Icons.X className="w-5 h-5" />
-            </button>
-          </div>
 
-          {/* Navigation links */}
-          <nav aria-label="Mobile Menu Links" className="mt-6 flex flex-col space-y-2">
-            {items.map((item, idx) => {
-              const isActive = activeId === item.id;
-              return (
-                <button
+              <button
+                onClick={onClose}
+                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+                aria-label="Close navigation"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Centered Navigation Links List */}
+            <nav aria-label="Mobile Menu Links" className="my-auto py-6 flex flex-col items-center justify-center space-y-5 text-center">
+              {items.map((item, idx) => (
+                <motion.button
                   key={item.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
                   onClick={() => {
                     if (onItemClick) {
                       onItemClick(item.id);
                     }
                     onClose();
                   }}
-                  aria-current={isActive ? 'page' : undefined}
-                  style={{ animationDelay: `${idx * 40}ms` }}
-                  className={`w-full min-h-[44px] flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${
-                    isActive
-                      ? 'bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/25 font-semibold'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-black/[0.04] dark:hover:bg-white/[0.04]'
-                  }`}
+                  style={{
+                    fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
+                  }}
+                  className="text-2xl sm:text-[1.75rem] font-medium text-white/90 hover:text-[#FF5819] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer py-1"
                 >
-                  <span>{item.label}</span>
-                  <Icons.ChevronRight className="w-4 h-4 opacity-50" />
-                </button>
-              );
-            })}
-          </nav>
-        </div>
+                  {item.label}
+                </motion.button>
+              ))}
+            </nav>
 
-        {/* Bottom CTA & footer */}
-        <div className="pt-6 border-t border-[var(--border-subtle)] space-y-3">
-          <Button
-            variant="primary"
-            size="md"
-            fullWidth
-            rightIcon={<Icons.ArrowRight className="w-4 h-4" />}
-            onClick={() => {
-              if (onItemClick) {
-                onItemClick('contact');
-              }
-              onClose();
-            }}
-          >
-            Start Project Inquiry
-          </Button>
+            {/* Bottom CTA Button: Book a Free Call → */}
+            <div className="pt-4 border-t border-white/10">
+              <button
+                onClick={() => {
+                  onClose();
+                  navigate('book');
+                }}
+                style={{
+                  backgroundColor: '#FF5819',
+                  boxShadow: '2px 2px 12px rgba(36,36,36,0.2), inset 4px 4px 6px rgba(255,255,255,0.25)',
+                }}
+                className="btn-sheen w-full h-[52px] rounded-[40px] text-white font-semibold text-base inline-flex items-center justify-center gap-2 shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 cursor-pointer select-none"
+              >
+                <span>Book a Free Call</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
 
-          <p className="text-[11px] text-center text-[var(--text-subtle)]">
-            © {new Date().getFullYear()} PrimeDev Engineering.
-          </p>
+          </motion.div>
         </div>
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };

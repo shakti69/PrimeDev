@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Helper download / scratch scripts
+download-*.js
+extract-*.js
+bundle_*.js
+all_brix_images.json
+extracted_assets.json
