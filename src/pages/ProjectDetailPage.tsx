@@ -38,16 +38,26 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectId 
       <Section withGrid className="pt-8 pb-16 border-b border-[var(--border-subtle)]">
         <Container>
           <div className="space-y-6 max-w-4xl">
-            {/* Breadcrumbs */}
-            <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
+            {/* Breadcrumbs & Back Navigation */}
+            <div className="flex items-center justify-between gap-4 flex-wrap">
               <button
-                onClick={() => navigate('work')}
-                className="hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+                onClick={() => navigate('home')}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-white/10 border border-black/10 dark:border-white/15 text-xs font-mono font-semibold text-[var(--text-primary)] hover:border-[#FF5819] hover:text-[#FF5819] transition-all cursor-pointer shadow-xs"
               >
-                Work & Portfolio
+                <Icons.ArrowRight className="w-3.5 h-3.5 rotate-180" />
+                <span>← Back to Selected Work</span>
               </button>
-              <span>/</span>
-              <span className="text-brand-500 dark:text-brand-400 font-semibold">{project.title}</span>
+              
+              <div className="flex items-center gap-2 text-xs font-mono text-[var(--text-muted)]">
+                <button
+                  onClick={() => navigate('home')}
+                  className="hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+                >
+                  Work & Portfolio
+                </button>
+                <span>/</span>
+                <span className="text-[#FF5819] font-semibold">{project.title}</span>
+              </div>
             </div>
 
             <div className="space-y-4">

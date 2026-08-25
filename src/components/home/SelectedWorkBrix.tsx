@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { useRouter } from '../../context/RouterContext';
-import { PROJECTS_LIST, type ProjectDetail } from '../../data/projectsData';
 
 export interface ProjectItem {
   id: string;
@@ -24,30 +23,6 @@ export interface ProjectItem {
 
 export const SelectedWorkBrix: React.FC = () => {
   const { navigate } = useRouter();
-  const [activeModalProject, setActiveModalProject] = useState<ProjectDetail | null>(null);
-
-  // Lock body scroll when modal is open
-  useEffect(() => {
-    if (activeModalProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [activeModalProject]);
-
-  // Handle ESC key to close modal
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && activeModalProject) {
-        setActiveModalProject(null);
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeModalProject]);
 
   const projects: ProjectItem[] = [
     {
@@ -188,13 +163,6 @@ export const SelectedWorkBrix: React.FC = () => {
     },
   ];
 
-  const handleCardClick = (projectId: string) => {
-    const detail = PROJECTS_LIST.find((p) => p.id === projectId || p.slug === projectId);
-    if (detail) {
-      setActiveModalProject(detail);
-    }
-  };
-
   return (
     <section id="work" className="py-20 sm:py-32 bg-white relative">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -212,7 +180,7 @@ export const SelectedWorkBrix: React.FC = () => {
               SELECTED WORK
             </span>
             <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#F4F4F6] text-[#666666] border border-black/5">
-              Click any project to view details
+              Click any project to view full case study & details
             </span>
           </div>
           <h2
@@ -239,7 +207,7 @@ export const SelectedWorkBrix: React.FC = () => {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: (index % 2) * 0.12, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ y: -6 }}
-              onClick={() => handleCardClick(project.id)}
+              onClick={() => navigate('project-detail', project.id)}
               className="bg-[#F5F5F5] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between gap-6 transition-all duration-300 hover:shadow-2xl cursor-pointer group relative border border-black/[0.03]"
             >
               {/* Card Header Info */}
@@ -247,8 +215,9 @@ export const SelectedWorkBrix: React.FC = () => {
                 <div className="flex items-center justify-between gap-2 flex-wrap">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#242424] group-hover:text-[#FF5819] transition-colors duration-200 flex items-center gap-1.5">
                     <span>{project.client}</span>
-                    <span className="text-[10px] text-[#FF5819] opacity-0 group-hover:opacity-100 transition-opacity font-normal">
-                      → Click for details
+                    <span className="text-[11px] text-[#FF5819] font-semibold flex items-center gap-0.5 opacity-80 group-hover:opacity-100 transition-opacity">
+                      <span>• View Case Study</span>
+                      <span>→</span>
                     </span>
                   </span>
                   <span className="text-[11px] font-mono text-[#888888] px-2.5 py-0.5 rounded-full bg-white border border-black/[0.04] shadow-xs group-hover:border-[#FF5819]/30 transition-colors">
@@ -329,192 +298,6 @@ export const SelectedWorkBrix: React.FC = () => {
         </div>
 
       </div>
-
-      {/* =========================================================================
-          INTERACTIVE PROJECT DETAIL MODAL / CASE STUDY VIEWER
-          ========================================================================= */}
-      <AnimatePresence>
-        {activeModalProject && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10"
-          >
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={() => setActiveModalProject(null)}
-              className="fixed inset-0 bg-black/75 backdrop-blur-md"
-              aria-hidden="true"
-            />
-
-            {/* Modal Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.94, y: 25 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: 25 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-[#1A1A1A] text-white rounded-[32px] sm:rounded-[40px] border border-white/15 shadow-2xl z-10 p-6 sm:p-10 flex flex-col gap-8 custom-scrollbar"
-            >
-              {/* Top Bar: Category / Status & Close Button */}
-              <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-                <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="px-3 py-1 rounded-full bg-[#FF5819]/20 text-[#FF5819] border border-[#FF5819]/30 text-xs font-mono font-bold uppercase">
-                    {activeModalProject.category}
-                  </span>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    {activeModalProject.status}
-                  </span>
-                  <span className="text-xs text-white/50 font-mono">
-                    {activeModalProject.timeframe}
-                  </span>
-                </div>
-
-                <button
-                  onClick={() => setActiveModalProject(null)}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
-                  aria-label="Close modal"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Banner Image Preview */}
-              {activeModalProject.imageUrl && (
-                <div className="w-full h-64 sm:h-80 rounded-2xl overflow-hidden relative border border-white/10 shadow-lg shrink-0">
-                  <img
-                    src={activeModalProject.imageUrl}
-                    alt={activeModalProject.title}
-                    className="w-full h-full object-cover object-top"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent pointer-events-none" />
-                </div>
-              )}
-
-              {/* Title & Tagline */}
-              <div className="space-y-3">
-                <h3
-                  style={{
-                    fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
-                    letterSpacing: '-0.03em',
-                  }}
-                  className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
-                >
-                  {activeModalProject.title}
-                </h3>
-                <p className="text-sm sm:text-base text-white/80 leading-relaxed">
-                  {activeModalProject.tagline}
-                </p>
-              </div>
-
-              {/* 2-Column Challenge & Solution Details */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2.5">
-                  <span className="text-xs font-mono font-bold text-[#FF5819] uppercase tracking-wider flex items-center gap-1.5">
-                    <span>01</span>
-                    <span>The Challenge</span>
-                  </span>
-                  <p className="text-xs sm:text-sm text-white/75 leading-relaxed">
-                    {activeModalProject.challenge}
-                  </p>
-                </div>
-
-                <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2.5">
-                  <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
-                    <span>02</span>
-                    <span>The Solution</span>
-                  </span>
-                  <p className="text-xs sm:text-sm text-white/75 leading-relaxed">
-                    {activeModalProject.solution}
-                  </p>
-                </div>
-              </div>
-
-              {/* Key Features */}
-              <div className="space-y-4">
-                <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider font-mono">
-                  Key Implemented Features
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {activeModalProject.keyFeatures.map((feat, idx) => (
-                    <div
-                      key={idx}
-                      className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3"
-                    >
-                      <span className="w-5 h-5 rounded-full bg-[#FF5819]/20 text-[#FF5819] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
-                        ✓
-                      </span>
-                      <span className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                        {feat}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tech Stack Pills */}
-              <div className="space-y-3">
-                <h4 className="text-xs font-bold text-white/60 uppercase tracking-widest font-mono">
-                  Technologies Utilized
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {activeModalProject.techStack.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-white/90"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom CTAs: Open Case Study & Discuss */}
-              <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <button
-                  onClick={() => {
-                    const slug = activeModalProject.slug;
-                    setActiveModalProject(null);
-                    navigate('project-detail', slug);
-                  }}
-                  className="btn-sheen w-full sm:w-auto px-6 h-[48px] rounded-full bg-white text-[#1E1E1E] font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all cursor-pointer select-none shadow-md"
-                >
-                  <span>Open Full Case Study Page</span>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </button>
-
-                <button
-                  onClick={() => {
-                    setActiveModalProject(null);
-                    navigate('book');
-                  }}
-                  style={{
-                    backgroundColor: '#FF5819',
-                    boxShadow: '0 4px 14px rgba(255,88,25,0.4)',
-                  }}
-                  className="btn-sheen w-full sm:w-auto px-6 h-[48px] rounded-full text-white font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all cursor-pointer select-none"
-                >
-                  <span>Discuss Similar Project</span>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </button>
-              </div>
-
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 };

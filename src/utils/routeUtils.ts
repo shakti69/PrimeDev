@@ -33,6 +33,9 @@ export function parseHash(hash: string): RouteState {
     if (sub) return { page: 'project-detail', param: sub };
     return { page: 'work' };
   }
+  if (main === 'project-detail' || main === 'project') {
+    return { page: 'project-detail', param: sub };
+  }
   if (main === 'contact') return { page: 'book' };
 
   return { page: 'home' };
