@@ -63,20 +63,21 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectId 
                 </Badge>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl font-extrabold tracking-editorial text-[var(--text-primary)] leading-tight">
+              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-editorial text-[var(--text-primary)] leading-tight">
                 {project.title}
               </h1>
 
-              <p className="text-lg sm:text-xl text-[var(--text-muted)] leading-relaxed max-w-3xl">
+              <p className="text-sm sm:text-lg text-[var(--text-muted)] leading-relaxed max-w-3xl">
                 {project.tagline}
               </p>
             </div>
 
             {/* Trust Badges & Action buttons (No source code repository button) */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
               <Button
                 variant="primary"
                 size="md"
+                className="w-full sm:w-auto justify-center"
                 rightIcon={<Icons.ArrowRight className="w-4 h-4" />}
                 onClick={() => navigate('book')}
               >
@@ -85,6 +86,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectId 
               <Button
                 variant="secondary"
                 size="md"
+                className="w-full sm:w-auto justify-center"
                 onClick={() => navigate('contact')}
               >
                 Discuss Similar Project
@@ -93,7 +95,7 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectId 
 
             {/* Visual Project Banner */}
             {project.imageUrl && (
-              <div className="w-full h-64 sm:h-96 rounded-2xl overflow-hidden border border-[var(--border-subtle)] shadow-lg mt-6">
+              <div className="w-full h-48 sm:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--border-subtle)] shadow-lg mt-4 sm:mt-6 bg-black">
                 <img
                   src={project.imageUrl}
                   alt={project.title}

@@ -31,11 +31,14 @@ export const SelectedWorkBrix: React.FC = () => {
   useEffect(() => {
     if (activeModalProject) {
       document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     } else {
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     }
     return () => {
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
     };
   }, [activeModalProject]);
 
@@ -197,7 +200,7 @@ export const SelectedWorkBrix: React.FC = () => {
   };
 
   return (
-    <section id="work" className="py-20 sm:py-32 bg-white relative">
+    <section id="work" className="py-16 sm:py-32 bg-white relative">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -206,14 +209,14 @@ export const SelectedWorkBrix: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-2 mb-14 sm:mb-20 text-left"
+          className="space-y-3 mb-10 sm:mb-20 text-left"
         >
-          <div className="flex items-center gap-3">
-            <span className="text-[12px] font-bold tracking-widest text-[#FF5819] uppercase font-mono">
+          <div className="flex items-center gap-2.5 flex-wrap">
+            <span className="text-[11px] sm:text-[12px] font-bold tracking-widest text-[#FF5819] uppercase font-mono">
               SELECTED WORK
             </span>
-            <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#F4F4F6] text-[#666666] border border-black/5">
-              Click any project to view details
+            <span className="text-[10px] sm:text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-[#F4F4F6] text-[#666666] border border-black/5">
+              Tap any project to view details
             </span>
           </div>
           <h2
@@ -223,7 +226,7 @@ export const SelectedWorkBrix: React.FC = () => {
               letterSpacing: '-0.04em',
               lineHeight: '1.08',
             }}
-            className="text-4xl sm:text-6xl text-[#1E1E1E]"
+            className="text-3xl sm:text-5xl lg:text-6xl text-[#1E1E1E]"
           >
             Proof that our strategy <br />
             <span className="text-[#999999] font-normal">works and converts.</span>
@@ -231,28 +234,28 @@ export const SelectedWorkBrix: React.FC = () => {
         </motion.div>
 
         {/* Responsive Grid with Staggered Entrance and Smooth Hover */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6, delay: (index % 2) * 0.12, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -6 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: (index % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -5 }}
               onClick={() => handleCardClick(project.id)}
-              className="bg-[#F5F5F5] rounded-[32px] p-6 sm:p-8 flex flex-col justify-between gap-6 transition-all duration-300 hover:shadow-2xl cursor-pointer group relative border border-black/[0.03]"
+              className="bg-[#F5F5F5] rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 flex flex-col justify-between gap-4 sm:gap-6 transition-all duration-300 hover:shadow-2xl active:scale-[0.99] cursor-pointer group relative border border-black/[0.03]"
             >
               {/* Card Header Info */}
-              <div className="space-y-2.5">
+              <div className="space-y-2">
                 <div className="flex items-center justify-between gap-2 flex-wrap">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#242424] group-hover:text-[#FF5819] transition-colors duration-200 flex items-center gap-1.5">
+                  <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#242424] group-hover:text-[#FF5819] transition-colors duration-200 flex items-center gap-1.5">
                     <span>{project.client}</span>
-                    <span className="text-[10px] text-[#FF5819] opacity-0 group-hover:opacity-100 transition-opacity font-normal">
-                      → Click for details
+                    <span className="text-[10px] text-[#FF5819] font-mono hidden sm:inline opacity-0 group-hover:opacity-100 transition-opacity font-normal">
+                      → View details
                     </span>
                   </span>
-                  <span className="text-[11px] font-mono text-[#888888] px-2.5 py-0.5 rounded-full bg-white border border-black/[0.04] shadow-xs group-hover:border-[#FF5819]/30 transition-colors">
+                  <span className="text-[10px] sm:text-[11px] font-mono text-[#888888] px-2.5 py-0.5 rounded-full bg-white border border-black/[0.04] shadow-xs group-hover:border-[#FF5819]/30 transition-colors">
                     {project.tag}
                   </span>
                 </div>
@@ -262,7 +265,7 @@ export const SelectedWorkBrix: React.FC = () => {
               </div>
 
               {/* Project Canvas Banner (Image or Stylized Card) */}
-              <div className={`w-full h-56 sm:h-72 rounded-2xl bg-gradient-to-br ${project.gradientClass} p-5 sm:p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 shadow-inner`}>
+              <div className={`w-full h-48 sm:h-72 rounded-xl sm:rounded-2xl bg-gradient-to-br ${project.gradientClass} p-4 sm:p-6 flex flex-col justify-between border border-white/10 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 shadow-inner`}>
                 
                 {/* Background image if provided */}
                 {project.imageUrl ? (
@@ -277,12 +280,12 @@ export const SelectedWorkBrix: React.FC = () => {
                 ) : null}
 
                 {/* Top badges */}
-                <div className="relative z-10 flex justify-between items-center text-[10px] sm:text-xs font-mono tracking-wider">
-                  <span className={`px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-md border border-white/10 ${project.accentColor || 'text-white/80'}`}>
+                <div className="relative z-10 flex justify-between items-center text-[9px] sm:text-xs font-mono tracking-wider gap-1">
+                  <span className={`px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md border border-white/10 ${project.accentColor || 'text-white/80'} truncate max-w-[55%]`}>
                     {project.badges?.topLeft || project.client}
                   </span>
                   {project.badges?.topRight && (
-                    <span className="px-2 py-0.5 rounded-md bg-black/40 backdrop-blur-md border border-white/10 text-white/70">
+                    <span className="px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md border border-white/10 text-white/70 truncate max-w-[45%] text-right">
                       {project.badges?.topRight}
                     </span>
                   )}
@@ -296,12 +299,12 @@ export const SelectedWorkBrix: React.FC = () => {
                         fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
                         letterSpacing: '-0.03em',
                       }}
-                      className="block text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white drop-shadow-md tracking-tight leading-tight"
+                      className="block text-xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white drop-shadow-md tracking-tight leading-tight"
                     >
                       {project.headline}
                     </span>
                     {project.subtitle && (
-                      <span className="block text-xs sm:text-sm text-white/80 mt-1.5 font-mono tracking-wide">
+                      <span className="block text-xs sm:text-sm text-white/80 mt-1 font-mono tracking-wide">
                         {project.subtitle}
                       </span>
                     )}
@@ -309,14 +312,14 @@ export const SelectedWorkBrix: React.FC = () => {
                 )}
 
                 {/* Bottom badges */}
-                <div className="relative z-10 flex justify-between items-center text-[9px] sm:text-[11px] text-white/70 font-mono tracking-wider">
+                <div className="relative z-10 flex justify-between items-center text-[8px] sm:text-[11px] text-white/70 font-mono tracking-wider gap-1">
                   {project.badges?.bottomLeft && (
-                    <span className="px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md border border-white/10">
+                    <span className="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10 truncate max-w-[55%]">
                       {project.badges?.bottomLeft}
                     </span>
                   )}
                   {project.badges?.bottomRight && (
-                    <span className={`px-2 py-0.5 rounded-md bg-black/50 backdrop-blur-md border border-white/10 ${project.accentColor || 'text-white/80'}`}>
+                    <span className={`px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10 ${project.accentColor || 'text-white/80'} truncate max-w-[45%] text-right`}>
                       {project.badges?.bottomRight}
                     </span>
                   )}
@@ -332,7 +335,7 @@ export const SelectedWorkBrix: React.FC = () => {
       </div>
 
       {/* =========================================================================
-          INTERACTIVE PROJECT DETAIL MODAL (Portaled to document.body)
+          INTERACTIVE PROJECT DETAIL MODAL (Optimized for Mobile & Desktop)
           ========================================================================= */}
       {typeof document !== 'undefined' &&
         createPortal(
@@ -341,48 +344,49 @@ export const SelectedWorkBrix: React.FC = () => {
               <div
                 role="dialog"
                 aria-modal="true"
-                className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 md:p-10 overflow-y-auto"
+                className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 md:p-10 overflow-y-auto"
+                style={{ WebkitOverflowScrolling: 'touch' }}
               >
                 {/* Fullscreen Backdrop */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.25 }}
+                  transition={{ duration: 0.2 }}
                   onClick={() => setActiveModalProject(null)}
-                  className="fixed inset-0 bg-black/80 backdrop-blur-md z-0"
+                  className="fixed inset-0 bg-black/85 backdrop-blur-md z-0"
                   aria-hidden="true"
                 />
 
                 {/* Modal Window Card */}
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.93, y: 30 }}
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.93, y: 30 }}
-                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative z-10 w-full max-w-4xl max-h-[88vh] overflow-y-auto bg-[#181818] text-white rounded-[28px] sm:rounded-[36px] border border-white/20 shadow-2xl p-6 sm:p-10 my-auto flex flex-col gap-7 custom-scrollbar"
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative z-10 w-full max-w-4xl max-h-[92vh] sm:max-h-[88vh] overflow-y-auto bg-[#181818] text-white rounded-[24px] sm:rounded-[36px] border border-white/20 shadow-2xl p-5 sm:p-8 md:p-10 my-auto flex flex-col gap-5 sm:gap-7 custom-scrollbar"
                 >
                   {/* Top Bar: Category / Status & Close Button */}
-                  <div className="flex items-center justify-between gap-4 border-b border-white/10 pb-4">
-                    <div className="flex items-center gap-2.5 flex-wrap">
-                      <span className="px-3 py-1 rounded-full bg-[#FF5819]/20 text-[#FF5819] border border-[#FF5819]/30 text-xs font-mono font-bold uppercase">
+                  <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-3 sm:pb-4 sticky -top-5 sm:-top-8 md:-top-10 bg-[#181818] pt-1 z-20">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#FF5819]/20 text-[#FF5819] border border-[#FF5819]/30 text-[10px] sm:text-xs font-mono font-bold uppercase">
                         {activeModalProject.category}
                       </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-xs font-mono flex items-center gap-1.5">
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 text-[10px] sm:text-xs font-mono flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                         {activeModalProject.status}
                       </span>
-                      <span className="text-xs text-white/50 font-mono">
+                      <span className="text-[10px] sm:text-xs text-white/50 font-mono hidden xs:inline">
                         {activeModalProject.timeframe}
                       </span>
                     </div>
 
                     <button
                       onClick={() => setActiveModalProject(null)}
-                      className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0"
+                      className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 text-white flex items-center justify-center transition-all cursor-pointer shrink-0"
                       aria-label="Close modal"
                     >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="18" y1="6" x2="6" y2="18" />
                         <line x1="6" y1="6" x2="18" y2="18" />
                       </svg>
@@ -391,7 +395,7 @@ export const SelectedWorkBrix: React.FC = () => {
 
                   {/* Banner Image Preview */}
                   {activeModalProject.imageUrl && (
-                    <div className="w-full h-56 sm:h-80 rounded-2xl overflow-hidden relative border border-white/10 shadow-lg shrink-0 bg-black">
+                    <div className="w-full h-44 sm:h-64 md:h-80 rounded-xl sm:rounded-2xl overflow-hidden relative border border-white/10 shadow-lg shrink-0 bg-black">
                       <img
                         src={activeModalProject.imageUrl}
                         alt={activeModalProject.title}
@@ -402,25 +406,25 @@ export const SelectedWorkBrix: React.FC = () => {
                   )}
 
                   {/* Title & Tagline */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-1.5 sm:space-y-2.5">
                     <h3
                       style={{
                         fontFamily: '"Pangea Afrikan Trial", "Suisse Int\'l", sans-serif',
                         letterSpacing: '-0.03em',
                       }}
-                      className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight"
+                      className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-tight"
                     >
                       {activeModalProject.title}
                     </h3>
-                    <p className="text-sm sm:text-base text-white/80 leading-relaxed">
+                    <p className="text-xs sm:text-sm md:text-base text-white/80 leading-relaxed">
                       {activeModalProject.tagline}
                     </p>
                   </div>
 
                   {/* 2-Column Challenge & Solution Details */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2.5">
-                      <span className="text-xs font-mono font-bold text-[#FF5819] uppercase tracking-wider flex items-center gap-1.5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 sm:gap-5">
+                    <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 space-y-1.5">
+                      <span className="text-[11px] sm:text-xs font-mono font-bold text-[#FF5819] uppercase tracking-wider flex items-center gap-1.5">
                         <span>01</span>
                         <span>The Challenge</span>
                       </span>
@@ -429,8 +433,8 @@ export const SelectedWorkBrix: React.FC = () => {
                       </p>
                     </div>
 
-                    <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.04] border border-white/10 space-y-2.5">
-                      <span className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <div className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-white/[0.04] border border-white/10 space-y-1.5">
+                      <span className="text-[11px] sm:text-xs font-mono font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
                         <span>02</span>
                         <span>The Solution</span>
                       </span>
@@ -441,17 +445,17 @@ export const SelectedWorkBrix: React.FC = () => {
                   </div>
 
                   {/* Key Features */}
-                  <div className="space-y-3.5">
-                    <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider font-mono">
+                  <div className="space-y-2.5 sm:space-y-3.5">
+                    <h4 className="text-xs sm:text-sm font-bold text-white uppercase tracking-wider font-mono">
                       Key Implemented Features
                     </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                       {activeModalProject.keyFeatures.map((feat, idx) => (
                         <div
                           key={idx}
-                          className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-3"
+                          className="p-3 sm:p-3.5 rounded-lg sm:rounded-xl bg-white/[0.03] border border-white/10 flex items-start gap-2.5"
                         >
-                          <span className="w-5 h-5 rounded-full bg-[#FF5819]/20 text-[#FF5819] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                          <span className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#FF5819]/20 text-[#FF5819] flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 mt-0.5">
                             ✓
                           </span>
                           <span className="text-xs sm:text-sm text-white/85 leading-relaxed">
@@ -463,15 +467,15 @@ export const SelectedWorkBrix: React.FC = () => {
                   </div>
 
                   {/* Tech Stack Pills */}
-                  <div className="space-y-3">
-                    <h4 className="text-xs font-bold text-white/60 uppercase tracking-widest font-mono">
+                  <div className="space-y-2 sm:space-y-3">
+                    <h4 className="text-[11px] sm:text-xs font-bold text-white/60 uppercase tracking-widest font-mono">
                       Technologies Utilized
                     </h4>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {activeModalProject.techStack.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-white/90"
+                          className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-xs font-mono text-white/90"
                         >
                           {tech}
                         </span>
@@ -480,17 +484,17 @@ export const SelectedWorkBrix: React.FC = () => {
                   </div>
 
                   {/* Bottom CTAs: Open Case Study & Discuss */}
-                  <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+                  <div className="pt-3 sm:pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-3">
                     <button
                       onClick={() => {
                         const slug = activeModalProject.slug;
                         setActiveModalProject(null);
                         navigate('project-detail', slug);
                       }}
-                      className="btn-sheen w-full sm:w-auto px-6 h-[48px] rounded-full bg-white text-[#1E1E1E] font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 hover:bg-zinc-200 transition-all cursor-pointer select-none shadow-md"
+                      className="btn-sheen w-full sm:w-auto px-5 h-[44px] sm:h-[48px] rounded-full bg-white text-[#1E1E1E] font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 hover:bg-zinc-200 active:scale-98 transition-all cursor-pointer select-none shadow-md"
                     >
-                      <span>Open Full Case Study Page</span>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <span>Open Full Case Study</span>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M7 17L17 7M17 7H7M17 7V17" />
                       </svg>
                     </button>
@@ -504,10 +508,10 @@ export const SelectedWorkBrix: React.FC = () => {
                         backgroundColor: '#FF5819',
                         boxShadow: '0 4px 14px rgba(255,88,25,0.4)',
                       }}
-                      className="btn-sheen w-full sm:w-auto px-6 h-[48px] rounded-full text-white font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 hover:scale-105 active:scale-95 transition-all cursor-pointer select-none"
+                      className="btn-sheen w-full sm:w-auto px-5 h-[44px] sm:h-[48px] rounded-full text-white font-semibold text-xs sm:text-sm inline-flex items-center justify-center gap-2 hover:scale-105 active:scale-98 transition-all cursor-pointer select-none"
                     >
                       <span>Discuss Similar Project</span>
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12" />
                         <polyline points="12 5 19 12 12 19" />
                       </svg>
