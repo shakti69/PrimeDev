@@ -82,22 +82,10 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectId 
               </p>
             </div>
 
-            {/* External Links / Action buttons */}
+            {/* Action buttons */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              {project.githubUrl && (
-                <Button
-                  variant="primary"
-                  size="md"
-                  leftIcon={<Icons.Github className="w-4 h-4" />}
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Source Repository
-                </Button>
-              )}
               <Button
-                variant="secondary"
+                variant="primary"
                 size="md"
                 rightIcon={<Icons.ArrowRight className="w-4 h-4" />}
                 onClick={() => navigate('contact')}
