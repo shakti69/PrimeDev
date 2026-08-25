@@ -95,6 +95,17 @@ export const ProjectDetailPage: React.FC<ProjectDetailPageProps> = ({ projectId 
                 Discuss Similar Project
               </Button>
             </div>
+
+            {/* Visual Project Banner */}
+            {project.imageUrl && (
+              <div className="w-full h-64 sm:h-96 rounded-2xl overflow-hidden border border-[var(--border-subtle)] shadow-lg mt-6">
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+            )}
           </div>
         </Container>
       </Section>
